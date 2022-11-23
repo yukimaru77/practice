@@ -1,8 +1,12 @@
 {
 	"folders": [
 		{
-			"path": "../マークダウン"
+			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"markdown.styles": [
+			".\\github-markdown.css"
+		]
+	}
 }
