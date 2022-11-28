@@ -85,3 +85,10 @@ $$M_C=\begin{pmatrix}
 とすると
 $$ rankM_c=n$$
 が成立。
+
+$$
+\begin{aligned} 
+  b & =a \cr
+  &=a
+\end{aligned}
+$$
