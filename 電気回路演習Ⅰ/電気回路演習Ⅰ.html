@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>電気回路演習Ⅰ.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+<link rel="stylesheet" href="file:///d%3A/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A6%E3%83%B3/practice/github-markdown.css" type="text/css">
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://yukimaru77.github.io/practice/github-markdown.css">
+<style>
+.markdown-body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+}
+
+@media (max-width: 767px) {
+.markdown-body {
+  padding: 15px;
+}
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ]
+    });
+  });
+  elements = document.getElementsByTagName("h2");
+  console.log(elements)
+
+</script>
+</head>
+<body>
+  <article class="markdown-body">
+<h1 id="%E9%9B%BB%E6%B0%97%E5%9B%9E%E8%B7%AF%E6%BC%94%E7%BF%92%E2%85%B0">電気回路演習Ⅰ</h1>
+<h2 id="%E7%AC%AC%E4%B8%80%E7%AB%A0%E3%81%AE%E8%89%AF%E5%95%8F">第一章の良問</h2>
+<h3 id="2-1">[2]-(1)</h3>
+<p>並列なので通り道が増える=抵抗値が減るを数式で表す問題。感覚と一致する。</p>
+<h3 id="6-2">[6]-(2)</h3>
+<p>はじご形回路の無限和。収束することを前提とすれば楽に解ける。収束性も$並列つなぎを増やす=合成抵抗は単調減少$かつ0以上よりすぐ収束すること自体はすぐ導ける。</p>
+<h3 id="789">[7]、[8]、[9]</h3>
+<p>対称性の問題。独立した式の見つけ方がうまいどれかは見ておこう。<strong>具体的にはある場所の電位差は2通りの方法で表せることを利用している</strong>。</p>
+<h3 id="10">[10]</h3>
+<p>対称性の問題であるが、<strong>幾何学的ではなく、電子の気持ちになって解くことも重要</strong> だというメッセージを感じる問題。3次元の場合は幾何学的にはそこそこのセンスを要するので電子になって <strong>「あれ？ここ右行っても左行っても同じじゃね？じゃあ電流値も同じ」</strong> って感じで解けるようにしておこう。とりあえず最短経路が同じ手数なら(大抵は)対称。違うなら確実に非対称なので電流は違う文字にしよう。後、電子の気持ちになる場合も初手の <strong>等電位面の確認は大切</strong></p>
+<h3 id="16">[16]</h3>
+<p>デルタ結線の探し方は閉回路で3ノードを思い出させてくれる良問。4ノード閉回路と3ノード閉回路が混ざっており、いい練習になる。</p>
+<h3 id="21-2">[21]-(2)</h3>
+<p>回路を切り離せる例</p>
+<h3 id="27">[27]</h3>
+<p>検流器のふれというパラメータを使う問題。分流器をつけているため電流の値というパラメータ名では無くなっている。</p>
+<h3 id="34">[34]</h3>
+<p>回路の変形がうまい。電圧源は左下にあったほうが視覚的にいいなーと思わせてくれる問題。</p>
+<h3 id="37-2">[37]-(2)</h3>
+<p><strong>任意の○○に対して成り立つ=式変形をして任意の○○の係数を0にする</strong> を思い出せる</p>
+<h3 id="56">[56]</h3>
+<p>絶縁不良の位置を推定させる問題。なんか実用的</p>
+<h3 id="57">[57]</h3>
+<p>差分方程式を練習できる。普通に解き方を知らないとできる気がしない。(1)番のキルヒ第2を組み込む、(2)の差分方程式、(3)の$I'_1$を消す方針。すくなくとも一瞬で思いつくようなものではない。</p>
+<h3 id="60">[60]</h3>
+<p>電熱線っ言葉が聞きなれないので練習用に一題。定格電圧と定格電力から抵抗値が分かるのがポイント</p>
+<h3 id="62-13">[62]-(1)～(3)</h3>
+<p>定格電圧と定格電力から抵抗値を求め、二つの電球(電熱線)をつなげた際どうなるのか考える問題。すべて良問。</p>
+<h3 id="70">[70]</h3>
+<p>比熱とか抵抗率が混ざった問題。一問くらいは解いとこう。</p>
+<h3 id="74">[74]</h3>
+<p>著津お考えれば当たり前だが、温度係数は何℃を基準にするかで変化する値だということに気づかせてくれる問題。そもそも温度係数は$(t_2-t_1)$が小さい時に成り立つ近似式。</p>
+<h3 id="75">[75]</h3>
+<p>抵抗が温度特性を持つというより、抵抗率が温度特性を持つという見方を思い出させてくれる問題。また、熱膨張率という見慣れないものの扱い方も練習できる。</p>
+<h3 id="77">[77]</h3>
+<p><strong>○○に無関係=係数を0にする or ○○で微分して常に0になるようにする</strong> のが定石なので題意を見れば温度で微分するのは普通だがなかなか温度で微分する機械はないので貴重</p>
+
+</article>
+</body>
+<script>
+	elements = document.getElementsByTagName("h2");
+	table_of_contents = document.createElement("ul");
+	h2=document.createElement("h2");
+	h2.textContent="目次"
+	table_of_contents.appendChild(h2)
+	for (  var i = 0;  i < elements.length;  i++  ) {
+		console.log(elements[ i ]);
+		const newElement_li = document.createElement("li");
+		const newElement_a = document.createElement("a");
+		newElement_a.href="#"+elements[ i ].id;
+		newElement_a.textContent = elements[ i ].textContent;
+		newElement_li.appendChild(newElement_a);
+		table_of_contents.appendChild(newElement_li);
+		
+	}
+	parents=document.getElementsByClassName("markdown-body")[0];
+	h1 = document.getElementsByTagName("h1")[0];
+	parents.insertBefore(table_of_contents, h1.nextSibling)
+</script>
+</html>
