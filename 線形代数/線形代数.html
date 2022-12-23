@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>線形代数.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+<link rel="stylesheet" href="file:///c%3A/Users/unive/practice/github-markdown.css" type="text/css">
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://yukimaru77.github.io/practice/github-markdown.css">
+<style>
+.markdown-body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+}
+
+@media (max-width: 767px) {
+.markdown-body {
+  padding: 15px;
+}
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ]
+    });
+  });
+  elements = document.getElementsByTagName("h2");
+  console.log(elements)
+
+</script>
+</head>
+<body>
+  <article class="markdown-body">
+<h1 id="%E7%B7%9A%E5%BD%A2%E4%BB%A3%E6%95%B0">線形代数</h1>
+<h2 id="%E3%81%82%E3%82%8B%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%AB%E5%9E%82%E7%9B%B4%E3%81%AA%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB">あるベクトルに垂直なベクトル</h2>
+<p>ベクトル$、b$を用いると$a$に垂直なベクトル$h$
+は
+$$
+h=b-\frac{a}{|a|}|b|cosΘ=b-\frac{a \cdot b}{|a|^2}a
+$$
+となる。2次元なら垂直なベクトルは大きさを除けば一意に定まるので$b$は任意だがn次元の場合、同様に大きさを除けば$n-1$の任意性があるためこの公式を使うと一意に定まってしまう点に注意</p>
+<h2 id="%E7%9B%B4%E7%B7%9A%E3%81%AE%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E6%96%B9%E7%A8%8B%E5%BC%8F">直線のベクトル方程式</h2>
+<p>点Aを通る方向ベクトルdの方程式はそのまま
+$$
+p=A+td
+$$
+ここでtは媒介変数でありこの媒介変数を削除するには
+$$
+x=A_x+td_x、y=A_y+td_y、z=A_z++td_z
+$$
+より変形して
+$$
+\frac{x-A_x}{d_x}=\frac{y-A_y}{d_y}=\frac{z-A_z}{d_z}
+$$
+となる。</p>
+<h2 id="%E5%B9%B3%E9%9D%A2%E3%81%AE%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E6%96%B9%E7%A8%8B%E5%BC%8F">平面のベクトル方程式</h2>
+<p>点Aを通る方向ベクトル$d_1、d_2$の方程式はそのまま
+$$
+p=A+t_1d_1+t_2d_2
+$$
+ここで$t_1、t_2$は媒介変数である。法線ベクトル$h$を用いて
+$$
+h\cdot \overrightarrow{Ap} =0
+$$
+より変形して
+$$
+\begin{aligned}
+&amp;h_x(p_x-A_x)+h_y(p_y-A_y)+h_z(p_z-A_z) = 0\cr
+&amp;h_xp_x+h_yp_y+h_zp_z = d
+\end{aligned}
+$$
+ただし、$d=h_xA_x+h_yA_y+h_zA_z$となる。</p>
+<h2 id="%E8%BB%A2%E7%BD%AE%E8%A1%8C%E5%88%97">転置行列</h2>
+<p>$$
+^t(AB)={^tB}{^tA}
+$$
+これは$i×j　j×k$の転置は中身を転置する方針の場合、$k×j　j×i$とするしかないので感覚的にも一致する。</p>
+<h2 id="%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E5%88%86%E5%89%B2">ブロック分割</h2>
+<h1 id="0%E3%81%8C%E5%9B%BA%E3%81%BE%E3%81%A3%E3%81%A6%E3%82%8B%E5%A0%B4%E5%90%88%E3%81%AF%E5%88%97%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%A7%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E5%88%86%E5%89%B2%E3%81%99%E3%82%8B%E3%81%A8%E7%B5%90%E6%A7%8B%E7%B6%BA%E9%BA%97%E3%82%81%E3%81%AB%E3%81%AA%E3%82%8Ba-beginpmatrixa11--a12--a13-cra21--a22--a13-cra31--a32--a33endpmatrix">0が固まってる場合は列ベクトルでブロック分割すると結構綺麗めになる。
+$$
+A =
+\begin{pmatrix}
+a_{11} &amp; a_{12} &amp; a_{13} \cr
+a_{21} &amp; a_{22} &amp; a_{13} \cr
+a_{31} &amp; a_{32} &amp; a_{33}
+\end{pmatrix}</h1>
+<h1 id="beginpmatrixx1--x2--x3-crendpmatrix%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E5%88%97%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%A7%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E5%88%86%E5%89%B2%E3%82%92%E8%A1%8C%E3%81%86%E4%BE%8B%E3%81%88%E3%81%B0%E3%81%93%E3%81%AE%E5%88%86%E5%89%B2%E3%82%92%E7%94%A8%E3%81%84%E3%82%8B%E3%81%A8beginpmatrixa11--a12--a13-cra21--a22--a13-cra31--a32--a33endpmatrixbeginpmatrix%CE%BB1--0--0-cr0--%CE%BB2--0-cr0--0--%CE%BB3endpmatrix">\begin{pmatrix}
+x_{1} &amp; x_{2} &amp; x_{3} \cr
+\end{pmatrix}
+$$
+のように列ベクトルでブロック分割を行う。例えばこの分割を用いると
+$$
+\begin{pmatrix}
+a_{11} &amp; a_{12} &amp; a_{13} \cr
+a_{21} &amp; a_{22} &amp; a_{13} \cr
+a_{31} &amp; a_{32} &amp; a_{33}
+\end{pmatrix}
+\begin{pmatrix}
+λ_{1} &amp; 0 &amp; 0 \cr
+0 &amp; λ_2 &amp; 0 \cr
+0 &amp; 0 &amp; λ_{3}
+\end{pmatrix}</h1>
+<h1 id="beginpmatrix%CE%BB1x1--%CE%BB2x2--%CE%BB3x3-crendpmatrix%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E7%B0%A1%E5%8D%98%E3%81%AB%E8%A1%A8%E3%81%9B%E3%81%9F%E3%82%8Abeginpmatrixa11--a12--a13-cra21--a22--a13-cra31--a32--a33endpmatrixbeginpmatrix%CE%BB1--1--0-cr0--%CE%BB2--1-cr0--0--%CE%BB3endpmatrix">\begin{pmatrix}
+λ_{1}x_{1} &amp; λ_2x_{2} &amp; λ_3x_{3} \cr
+\end{pmatrix}
+$$
+のように簡単に表せたり
+$$
+\begin{pmatrix}
+a_{11} &amp; a_{12} &amp; a_{13} \cr
+a_{21} &amp; a_{22} &amp; a_{13} \cr
+a_{31} &amp; a_{32} &amp; a_{33}
+\end{pmatrix}
+\begin{pmatrix}
+λ_{1} &amp; 1 &amp; 0 \cr
+0 &amp; λ_2 &amp; 1 \cr
+0 &amp; 0 &amp; λ_{3}
+\end{pmatrix}</h1>
+<p>\begin{pmatrix}
+λ_{1}x_{1} &amp; x_1+λ_2x_{2} &amp; x_2+λ_3x_{3} \cr
+\end{pmatrix}
+$$
+のように表せたりする。</p>
+
+</article>
+</body>
+<script>
+	elements = document.getElementsByTagName("h2");
+	table_of_contents = document.createElement("ul");
+	h2=document.createElement("h2");
+	h2.textContent="目次"
+	table_of_contents.appendChild(h2)
+	for (  var i = 0;  i < elements.length;  i++  ) {
+		console.log(elements[ i ]);
+		const newElement_li = document.createElement("li");
+		const newElement_a = document.createElement("a");
+		newElement_a.href="#"+elements[ i ].id;
+		newElement_a.textContent = elements[ i ].textContent;
+		newElement_li.appendChild(newElement_a);
+		table_of_contents.appendChild(newElement_li);
+		
+	}
+	parents=document.getElementsByClassName("markdown-body")[0];
+	h1 = document.getElementsByTagName("h1")[0];
+	parents.insertBefore(table_of_contents, h1.nextSibling)
+</script>
+</html>
