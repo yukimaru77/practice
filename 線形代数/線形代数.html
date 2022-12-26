@@ -399,7 +399,7 @@ padding: 45px;
 $$
 h=b-\frac{a}{|a|}|b|cosΘ=b-\frac{a \cdot b}{|a|^2}a
 $$
-となる。2次元なら垂直なベクトルは大きさを除けば一意に定まるので$b$は任意だがn次元の場合、同様に大きさを除けば$n-1$の任意性があるためこの公式を使うと一意に定まってしまう点に注意</p>
+となる。シュミット正規直交化法で使う方法の原理となっている。</p>
 <h2 id="%E7%9B%B4%E7%B7%9A%E3%81%AE%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E6%96%B9%E7%A8%8B%E5%BC%8F">直線のベクトル方程式</h2>
 <p>点Aを通る方向ベクトルdの方程式はそのまま
 $$
@@ -436,6 +436,11 @@ $$
 ^t(AB)={^tB}{^tA}
 $$
 これは$i×j　j×k$の転置は中身を転置する方針の場合、$k×j　j×i$とするしかないので感覚的にも一致する。</p>
+<p>ちなみに、逆行列でも
+$$
+(AB)^{-1}={B^{-1}}{A^{-1}}
+$$
+といった似た式が成立する。</p>
 <h2 id="%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E5%88%86%E5%89%B2">ブロック分割</h2>
 <p>0が固まってる場合は列ベクトルでブロック分割すると結構綺麗めになる。
 $$
@@ -480,6 +485,7 @@ a_{31} &amp; a_{32} &amp; a_{33}
 \end{pmatrix}
 $$
 のように表せたりする。</p>
+<p>また、内積については後で後述するが内積が定義できるような計量線形空間や複素計量線形空間ならば <strong>左側の行列を行ベクトルでブロック分割、右側の行列を列ベクトルでブロック分割することで内積記号を用いると見通しが良くなる。</strong> 線形代数改定9マセマP217の使用例が顕著。</p>
 <h2 id="%E9%80%86%E8%A1%8C%E5%88%97%E8%A1%8C%E5%88%97%E5%BC%8F">逆行列、行列式</h2>
 <p>逆行列は余因子行列とか掃きだし法とかで求める。</p>
 <p>行列式は余因子展開とかサラスとか。</p>
@@ -575,7 +581,8 @@ $$
 $$
 f(λx+μy)=λf(x)+μf(y)
 $$
-を満たす時、fをVからV'への線形写像という。ちなみに$λ=μ=1$とすれば1式に帰着し$μ=0$とすれば2式に帰着するので証明する際はどちらを証明しても構わない。</p>
+を満たす時、fをVからV'($f:\bold{V→V'}$)への <strong>線形写像</strong> という。ちなみに$λ=μ=1$とすれば1式に帰着し$μ=0$とすれば2式に帰着するので証明する際はどちらを証明しても構わない。</p>
+<p>また特に、$f:\bold{R^n→R^n}$の場合、<strong>線形変換</strong> という。</p>
 <p>先ほどの定義より、線形写像は
 $$
 \begin{aligned}
@@ -587,16 +594,17 @@ $$
 $$
 Imf=f(V)={f(x)|x\in{V}}
 $$
-と定義される。つまり線形空間Vの任意の元xの線形写像の集合である。なお、$Imf$はV'の部分空間となる。証明は部分空間の定義より$λf(x_1)+μf(x_2)\in{V'}$を示せばよくそれは$λx_1+μx_2\in{V}$より示せる。核(Kerf)は
+と定義される。つまり <strong>線形空間Vの任意の元xの線形写像の集合</strong> である。なお、$Imf$は <strong>V'の部分空間</strong> となる。証明は部分空間の定義より$λf(x_1)+μf(x_2)\in{V'}$を示せばよくそれは$λx_1+μx_2\in{V}$より示せる。</p>
+<p>核(Kerf)は
 $$
 Kerf=f^{-1}(0')={x\in{V}|f(x)=0'}
 $$
 となる。$kerf$は$f(λx_1+μx_2)=0'$より$λx_1+μx_2\in{Kerf}$より部分空間である。</p>
-<p>Vを$R^n$、V'を$R^m$とすると
+<p>線形写像の一例として、Vを$R^n$、V'を$R^m$とすると
 $$
 x_m=Ax_n
 $$
-で変換できる。Aはm×n行列である。この行列を表現行列という。</p>
+で変換できる。<strong>Aはm×n行列である。この行列を表現行列</strong> という。</p>
 <h2 id="kerf%E3%81%A8%E5%95%86%E7%A9%BA%E9%96%93">kerfと商空間</h2>
 <p>線形写像V→V'が全単射(1対1対応)の時、同型写像と言いう。条件は
 $$
@@ -673,7 +681,11 @@ $$
 $$
 \bold{a\cdot b}=a_1b_1+a_2b_2+\cdots +a_nb_n
 $$
-とすると$R^n$は計量線形空間となる。</p>
+とすると$R^n$は計量線形空間となる。なお、<strong>内積は行列の積</strong>  を用いて
+$$
+\bold{a\cdot b}={}^t\bold{ab}
+$$
+とあらわせる事も知っておこう。</p>
 <p><strong>ノルム</strong> とは計量線形空間Vの0でない2つの元$\bold{a}$に対して、
 $$
 |\bold{a}|=\sqrt{a\cdot a}
@@ -689,10 +701,10 @@ $$
 <li>$\bold{u_1、u_2、\dots 、u_n}$は線形独立</li>
 <li>Vの任意の元は$\bold{u_1、u_2、\dots 、u_n}$の線形結合で表せる。</li>
 </ul>
-<p>を満たすわけだが、さらに$\bigr}$
+<p>を満たすわけだが、さらに
 $$
 \bold{u_i\cdot u_j}=
-\biggl{
+{
 \begin{aligned}
 1(i=jの時) \cr
 0(i\neq jの時)
@@ -700,6 +712,158 @@ $$
 $$
 を満たすとき、その基底を <strong>正規直交基底</strong> と呼ぶ。ぱっと思いつくのは$\bold{e_1、\cdots e_n}$ だろうが別に正規直交基底の取り方は無限にいっぱいあるので注意。</p>
 <h2 id="%E7%9B%B4%E8%A1%8C%E8%A1%8C%E5%88%97%E7%9B%B4%E8%A1%8C%E5%A4%89%E6%8F%9B">直行行列、直行変換</h2>
+<p>$R^n$の正規直交基底${\bold{u_1、u_2、\cdots 、u_n}}$を列ベクトル成分にもつ行列
+$$
+U=[\bold{u_1、u_2、\cdots 、u_n}]
+$$
+を直行行列という。また、直行行列は
+$$
+\begin{aligned}
+&amp;^t\bold{UU}=\bold{U}{}^t\bold{U}=\bold{E} \cr
+&amp;^t\bold{U}=\bold{U}^{-1}
+\end{aligned}
+$$
+となる。直行行列$\bold{U}$を表現行列とする$f:\bold{R^n→R^n}$の線形変換を特に、<strong>直行変換</strong> という。直行変換の場合
+$$
+\begin{aligned}
+&amp;\bold{x\cdot y}=f(\bold{x})\cdot f(\bold{y}) \cr
+&amp; |\bold{x}|=|f(\bold{x})| \cr
+&amp; \bold{x}、\bold{y}のなす角=f(\bold{x})、f(\bold{y})のなす角
+\end{aligned}
+$$
+が成立する。</p>
+<h2 id="%E3%82%B7%E3%83%A5%E3%83%9F%E3%83%83%E3%83%88%E3%81%AE%E6%AD%A3%E8%A6%8F%E7%9B%B4%E4%BA%A4%E5%8C%96%E6%B3%95">シュミットの正規直交化法</h2>
+<p>計量線形空間$\bold{R^n}$の正規直交でない基底$\bold{{a_1、\cdots 、a_n}}$は正規直交基底$\bold{{u_1、\cdots 、u_m、\cdots 、u_n}}$に変換可能。具体的にはm=1の時は単純に
+$$
+\bold{u_1=\frac{1}{|a_1|}a_1}
+$$
+となり、それ以外の場合は
+$$
+\bold{b_m}=\bold{a_m}-\sum_{k=1}^{m-1}(\bold{u_k\cdot a_m})\bold{u_k}→\bold{u_k=\frac{1}{|a_k|}a_k}
+$$
+となる。m=2の場合を考えると何をやっているのかイメージはすぐつかめるはず。</p>
+<h2 id="%E5%AF%BE%E7%A7%B0%E8%A1%8C%E5%88%97">対称行列</h2>
+<p>$^t\bold{A=A}$なる行列$\bold{A}$は対称行列と呼ばれ、この行列は対角化可能である。また、固有ベクトル$\bold{x_i、x_j}$は <strong>それぞれ直交する。</strong> つまり、行列$\bold{A}$は(正規)直交行列$\bold{U=[x_1、x_2、\cdots、x_n]}$を用いて、$\bold{U^{-1}AU}$で対角化可能。</p>
+<h2 id="%E6%A8%99%E6%BA%96%E5%BD%A2%E5%BC%8F">標準形式</h2>
+<p>対称行列の使い道を紹介する。2次の同次多項式を考える。2次の同次多項式とは全ての項が2次式の多項式のことである。つまり
+$$
+\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}x_ix_j
+$$
+である。ただし$a_{ij}=a_{ji}$である。</p>
+<p>例えばn=2ならば
+$$
+\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}x_ix_j =
+\begin{pmatrix}
+x_1 &amp; x_2
+\end{pmatrix}
+\begin{pmatrix}
+a_{11} &amp; a_{12} \cr
+a_{12} &amp; a_{22}
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \cr
+x_2
+\end{pmatrix}
+$$
+となるので真ん中は対称行列である。対称行列は(正規)直交行列$\bold{U=[x_1、x_2、\cdots、x_n]}$を用いて、$\bold{U^{-1}AU}$で対角化可能なので
+$$
+\begin{pmatrix}
+x_1 \cr
+x_2
+\end{pmatrix}=\bold{U}
+\begin{pmatrix}
+x_1' \cr
+x_2'
+\end{pmatrix}
+$$
+とおくと、
+$$
+\begin{aligned}
+{\begin{pmatrix}
+x_1 &amp; x_2
+\end{pmatrix}}&amp;={}^t
+{\begin{pmatrix}
+x_1 \cr
+x_2
+\end{pmatrix}}\cr &amp;=
+{\begin{pmatrix}
+x_1' &amp; x_2'
+\end{pmatrix}}\bold{^tU}\cr &amp;=
+{\begin{pmatrix}
+x_1' &amp; x_2'
+\end{pmatrix}}\bold{U^{-1}}
+\end{aligned}
+$$
+より、
+$$
+\begin{aligned}
+{\begin{pmatrix}
+x_1 &amp; x_2
+\end{pmatrix}}
+{\begin{pmatrix}
+a_{11} &amp; a_{12} \cr
+a_{12} &amp; a_{22}
+\end{pmatrix}}
+{\begin{pmatrix}
+x_1 \cr
+x_2
+\end{pmatrix}}&amp;=
+{\begin{pmatrix}
+x_1' &amp; x_2'
+\end{pmatrix}}\bold{U^{-1}}
+{\begin{pmatrix}
+a_{11} &amp; a_{12} \cr
+a_{12} &amp; a_{22}
+\end{pmatrix}}\bold{U}
+{\begin{pmatrix}
+x_1' \cr
+x_2'
+\end{pmatrix}}\cr
+&amp;=
+{\begin{pmatrix}
+x_1' &amp; x_2'
+\end{pmatrix}}
+{\begin{pmatrix}
+λ_{1} &amp; 0 \cr
+0 &amp; λ_{2}
+\end{pmatrix}}
+{\begin{pmatrix}
+x_1' \cr
+x_2'
+\end{pmatrix}}\cr
+&amp;=λ_1x_1'^2+λ_2x_2'^2
+\end{aligned}
+$$
+となり標準系に直せる。さらにこれは直交行列$\bold{U}$による線形変換$f:R^2→R^2$なのでなす角や大きさは保存される。<strong>よってこの式によって表せられる図形は変数変換した後も同じ形である。</strong></p>
+<h2 id="%E8%A4%87%E7%B4%A0%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%82%A8%E3%83%AB%E3%83%9F%E3%83%BC%E3%83%88%E8%A1%8C%E5%88%97%E3%83%A6%E3%83%8B%E3%82%BF%E3%83%AA%E8%A1%8C%E5%88%97">複素ベクトル、エルミート行列、ユニタリ行列</h2>
+<p>VをC上の線形空間とする。Vを$R^n$とする。つまりベクトルの各要素は今、複素数である。ここで内積を以下のように定義する。
+$$
+\bold{x\cdot y}={}^t\bold{x\bar{y}}
+$$
+なお、<strong>右辺は行列としてxおよびyを見ている。</strong> これは内積の公理を満たさない(交換側)ため計量線形空間ではないが複素内積の公理を満たすため複素計量線形空間などと呼ばれる。<a href="https://youtu.be/ScdOb0yhfqQ">公理が見たい方はこちら</a>。交換側は成り立たないが
+$$
+\bold{x\cdot y}=\bold{\overline{y\cdot x}}
+$$
+といった交換側ぽいものは成り立つのも注意。内積結果は$\bold{x\cdot y} \in{C}$となるので注意。</p>
+<p>また、ノルムは
+$$
+|\sqrt{\bold{x\cdot x}}|
+$$
+と定義され結果は必ず$|\sqrt{\bold{x\cdot x}}| \in{R}$となり、実数となるので注意。</p>
+<p>n次複素行列$\bold{A_H}$が
+$$
+^t\bold{\overline{A_H}=A_H}
+$$
+を満たすとき、これを <strong>エルミート行列</strong> という。条件より <strong>対角成分(一番長い斜めのとこ)は実数</strong> となりほかの場所は共役とって転置すると等しくなる。エルミート行列は <strong>対角化可能であり固有値は実数となる。</strong></p>
+<p>n次複素行列$\bold{U_U}$が
+$$
+\bold{^t\overline{U_U}U_U=U_U{}^t\overline{U_U}=E}
+$$
+の時、これを <strong>ユニタリ行列</strong> と呼ぶ。難しく見えるが、要は$\bold{U_U}$の列ベクトルの内積が自分自身となら1、それ以外なら0という一身であり直交行列の複素数版である。線形代数改定9マセマP217にわかりやすい図が乗っている。</p>
+<p>対称行列を直交行列で対角化可能だったように、エルミート行列もユニタリ行列で以下のように対角化可能である。
+$$
+\bold{U^{-1}A_HU_U}
+$$</p>
 
 </article>
 </body>
