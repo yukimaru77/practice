@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>チートシート.md</title>
+<title>線形代数(メモ).md</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
 <style>
@@ -392,213 +392,23 @@ padding: 45px;
 </head>
 <body>
   <article class="markdown-body">
-<h1 id="%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E5%88%B6%E5%BE%A1%E2%85%B1">システム制御Ⅱ</h1>
-<h2 id="%E4%B8%AD%E9%96%93%E7%B7%A8">中間編</h2>
-<h2 id="%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E5%BC%8F%E3%81%8B%E3%82%89%E7%8A%B6%E6%85%8B%E6%96%B9%E7%A8%8B%E5%BC%8F%E3%81%AE%E6%B1%82%E3%82%81%E6%96%B9">微分方程式から状態方程式の求め方</h2>
-<p>一番高い階数の微分以外に状態量を割り当てるだけ。形は
+<h1 id="%E7%B7%9A%E5%BD%A2%E4%BB%A3%E6%95%B0%E3%83%A1%E3%83%A2">線形代数(メモ)</h1>
+<h2 id="%E8%A1%8C%E5%88%97%E3%81%AE%E9%9B%86%E5%90%88%E3%81%AF%E7%B7%9A%E5%BD%A2%E7%A9%BA%E9%96%93">行列の集合は線形空間</h2>
+<p>m×n行列の集合$M(m,n)$は線形空間の公理を満たすため線形空間である。次元は$m×n$次元となる。1つだけ1で他が0の行列がmn個で線形独立な基底が作れる事を考えれば当たり前。</p>
+<h2 id="%E7%9B%B8%E4%BC%BC%E3%81%AA%E8%A1%8C%E5%88%97">相似な行列</h2>
+<p>可逆行列(逆行列がある行列)$\bold{P}$を用いて
 $$
-\begin{aligned}
-&amp;\bold{X'(t)}=A\bold{X(t)}+Bu(t) \cr
-&amp;Y(t)=CX(t)+Du(t)
-\end{aligned}
+\bold{B=P^{-1}AP}
 $$
-なお、$Du(t)$は直立項と呼ばれる。出力に入力が定数倍されてそのまま出る部分。</p>
-<p>例えばRLC直列回路の場合
+の時、$\bold{A,B}$は相似であるといい、<strong>ランク、行列式、固有値、トレース</strong> が等しくなる。固有ベクトルは異なるので注意。固有ベクトルは
 $$
-e(t)=Ri(t )+Li(t)'+\frac{1}{c}\int_{0}^{t}i(t)dt
+\bold{Av_i}=λ_i\bold{v_i}
 $$
-となるが、変形して
+より
 $$
-\frac{1}{L}e(t)=\frac{R}{L}i(t )+i(t)'+\frac{1}{cL}\int_{0}^{t}i(t)dt
+\bold{P^{-1}APP^{-1}v_i}=λ_i\bold{P^{-1}v_i}→\bold{B(P^{-1}v_i)}=λ_i(\bold{P^{-1}v_i})
 $$
-入力を$e(t)$、出力を$y(t)=\int_{0}^{t}i(t)dt$だとおもうと
-$$
-\frac{1}{L}e(t)=y''+\frac{R}{L}y'+\frac{1}{cL}y
-$$
-となる。ここで一番高い階数の微分以外に状態量を割り当ててる。つまり
-$$
-x_1=y、x_2=y'、X=
-\begin{pmatrix}
-x_1 \cr
-x_2
-\end{pmatrix}
-$$
-とおくと、
-$$
-X'=\begin{pmatrix}
-1 &amp; 0 \cr
--\frac{1}{cL} &amp; -\frac{R}{L}
-\end{pmatrix}X+\begin{pmatrix}
-0 \cr
-\frac{1}{L}
-\end{pmatrix}u(t)
-$$
-となる。</p>
-<h2 id="eat%E3%81%AE%E6%B1%82%E3%82%81%E6%96%B9%E5%AF%BE%E8%A7%92%E5%8C%96%E3%81%A7">$e^{At}$の求め方(対角化で)</h2>
-<p>公式は
-$$e^{At}=Te^{Bt}T^{-1}$$
-なお、
-$$T^{-1}AT=B$$
-である。証明は
-$$
-\begin{aligned}
-e^{At}&amp;=I+At+\frac{A^2}{2!}t^2+\frac{A^3}{3!}t^3+\cdots \cr
-&amp;=TT^{-1}+TBT^{-1}t+\frac{TB^2T^{-1}}{2!}t^2+\frac{TB^3T^{-1}}{3!}t^3+\cdots \cr
-&amp;=T(I+Bt+\frac{B^2}{2!}t^2+\frac{B^3}{3!}t^3+\cdots)T^{-1} \cr
-&amp;=Te^{Bt}T^{-1}
-\end{aligned}
-$$</p>
-<p>ただしBは例えば$B= \begin{pmatrix} 1 &amp; 0 \cr 0 &amp; -2 \end{pmatrix}$のような対角行列なので$e^{Bt}$は簡単に
-$$e^{Bt}=
-\begin{pmatrix}
-e^{t} &amp; 0 \cr
-0 &amp; e^{-2t}
-\end{pmatrix}$$
-となる。</p>
-<h2 id="eat%E3%81%AE%E6%B1%82%E3%82%81%E6%96%B9%E3%83%A9%E3%83%97%E3%83%A9%E3%82%B9%E5%A4%89%E6%8F%9B%E3%81%A7">$e^{At}$の求め方(ラプラス変換で)</h2>
-<p>公式は
-$$e^{At}=\mathcal{L}^{-1}[(sI-A)^{-1}]$$
-証明は$u(t)=0$とすると
-$$X'=AX$$
-となるのでラプラス変換して
-$$sX(s)-X_0=AX(s) →(SI-A)X(s)=X_0$$
-逆行列を左からかけて
-$$X(s)=(SI-A)^{-1}X_0$$
-よって$u(t)=0$ならば
-$$X(t)=\mathcal{L}^{-1}[(sI-A)^{-1}]X_0$$
-ここで$X$の一般解は
-$$X(t)=e^{At}X_0+\int_{0}^{t} e^{A(t-τ)}bu(τ) dτ \underset{u(τ)=0}{\longrightarrow} X(t)=e^{At}X_0$$
-なので比較して
-$$e^{At}=\mathcal{L}^{-1}[(sI-A)^{-1}]$$
-となる。</p>
-<h2 id="%E7%8A%B6%E6%85%8B%E6%96%B9%E7%A8%8B%E5%BC%8Fboldx%E3%81%AE%E4%B8%80%E8%88%AC%E8%A7%A3%E7%A9%8D%E5%88%86%E3%81%A7">状態方程式$\bold{x}$の一般解(積分で)</h2>
-<p>公式は
-$$
-X=e^{At}X_0+\int_{0}^{t} e^{A(t-τ)}Bu(τ) dτ
-$$
-なので$e^{At}$さえわかれば頑張るだけ。なお、$\int_{0}^{t} e^{A(t-τ)}Bu(τ) dτ$を忘れたときは、
-$$
-\int_{0}^{t} x(t-τ)y(τ) dτ = \mathcal{L}^{-1}[XY]
-$$
-の関係式を思い出して
-$$
-\mathcal{L}^{-1}[(sI-A)^{-1}BU(s)] \underset{X=(sI-A)^{-1}、Y=BU(s)}{\longrightarrow} \int_{0}^{t} e^{A(t-τ)}Bu(τ) dτ
-$$
-とすれば導ける。ラプラス変換の式は次の項へ↓</p>
-<h2 id="%E7%8A%B6%E6%85%8B%E6%96%B9%E7%A8%8B%E5%BC%8Fboldx%E3%81%AE%E4%B8%80%E8%88%AC%E8%A7%A3%E3%83%A9%E3%83%97%E3%83%A9%E3%82%B9%E5%A4%89%E6%8F%9B%E3%81%A7">状態方程式$\bold{x}$の一般解(ラプラス変換で)</h2>
-<p>公式は
-$$
-X(t)=\mathcal{L}^{-1}[(sI-A)^{-1}]X_0+\mathcal{L}^{-1}[(sI-A)^{-1}BU(s)]
-$$
-忘れたときは
-$$
-\bold{X'(t)}=A\bold{X(t)}+Bu(t)
-$$
-をラプラス変換して
-$$
-sX(s)-X_0=AX(s)+BU(s) {\longrightarrow} (sI-A)X(s)=X_0+BU(s)
-$$
-より$(sI-A)^{-1}$を左からかけて
-$$
-X(s)=(sI-A)^{-1}X_0+(sI-A)^{-1}BU(s)
-$$
-逆ラプラス変換して
-$$
-X(t)=\mathcal{L}^{-1}[(sI-A)^{-1}]X_0+\mathcal{L}^{-1}[(sI-A)^{-1}BU(s)]
-$$</p>
-<h2 id="%E5%87%BA%E5%8A%9B%E6%96%B9%E7%A8%8B%E5%BC%8F%E3%81%AE%E6%B1%82%E3%82%81%E6%96%B9">出力方程式の求め方</h2>
-<p>$$
-Y(t)=CX(t)+Du(t)
-$$
-に代入するだけ。</p>
-<h2 id="%E3%83%95%E3%83%AB%E3%83%A9%E3%83%B3%E3%82%AF">フルランク</h2>
-<p>$A$を$n×m$行列する。Aのフルランクとは
-$$
-rank(A)=min(n,m)
-$$
-のことを言う。なお、<strong>ランクは転置しても変わらない</strong></p>
-<p>もし$n=m$なら
-$$
-rank(A)=n \Leftrightarrow det(A) \ne 0
-$$
-正方行列がフルランクか調べるなら大抵$det(A) \ne 0$を使った方が早い。問題はせいぜい4×4とかの行列だから。</p>
-<h2 id="%E7%B7%9A%E5%BD%A2%E7%8B%AC%E7%AB%8B">線形独立</h2>
-<p>$A$を$n×m$行列する。ここで
-$$
-rank(A)=k
-$$
-だったとする。ここで<strong>列ベクトル</strong>が線形独立なのかを調べるには(列は縦)
-$$
-k=m \Leftrightarrow \bold{列ベクトル}が線形独立
-$$
-を調べればいい。ランクは意味を持つ式の本数なので列数=ランクとなればすべての列ベクトルは意味を持つことになる。</p>
-<p>逆に<strong>行ベクトル</strong>が線形独立なのかを調べるには(行は横)
-$$
-k=n \Leftrightarrow \bold{行ベクトル}が線形独立
-$$
-を調べればいい。ランクは意味を持つ式の本数なので行数=ランクとなればすべての行ベクトルは意味を持つことになる。</p>
-<h2 id="%E5%8F%AF%E5%88%B6%E5%BE%A1%E3%81%AE%E5%88%A4%E5%AE%9A%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE1">可制御の判定(やり方その1)</h2>
-<p>定理
-$$
-行列e^{At}Bの\bold{行ベクトル}が線形独立ならば可制御
-$$</p>
-<p>よって $e^{At}B$のランクを求めて<strong>行数と一致するか調べる</strong>。問題で既に$e^{AT}$を求めたならこっちの方が楽かな？</p>
-<p>可制御はかせい&quot;ぎょう&quot;で調べる。と覚える。</p>
-<h2 id="%E5%8F%AF%E5%88%B6%E5%BE%A1%E3%81%AE%E5%88%A4%E5%AE%9A%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE2">可制御の判定(やり方その2)</h2>
-<p>状態変数の数(=Aの列数)をnとする。
-$$M_C=\begin{pmatrix}
-b &amp; Ab &amp; \dots  &amp; A^{n-1}b \cr
-\end{pmatrix}$$
-とすると
-$$ rankM_c=n$$
-が成立すれば可制御。$e^{AT}$を求てないならこっちの方が楽かな？</p>
-<h2 id="%E5%8F%AF%E8%A6%B3%E6%B8%AC%E3%81%AE%E5%88%A4%E5%AE%9A%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE1">可観測の判定(やり方その1)</h2>
-<p>定理
-$$
-行列Ce^{At}の\bold{列ベクトル}が線形独立ならば可制御
-$$</p>
-<p>よって $Ce^{At}$のランクを求めて<strong>列数と一致するか調べる</strong>。問題で既に$e^{AT}$を求めたならこっちの方が楽かな？</p>
-<h2 id="%E5%8F%AF%E8%A6%B3%E6%B8%AC%E3%81%AE%E5%88%A4%E5%AE%9A%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE2">可観測の判定(やり方その2)</h2>
-<p>状態変数の数(=Aの列数)をnとする。
-$$M_O=\begin{pmatrix}
-C  \cr
-CA \cr
-\dots \cr
-CA^{n-1} \cr
-\end{pmatrix}$$
-とすると
-$$ rankM_c=n$$
-が成立すれば可制御。$e^{AT}$を求てないならこっちの方が楽かな？</p>
-<h2 id="%E6%9C%9F%E6%9C%AB%E7%B7%A8">期末編</h2>
-<h2 id="%E5%BA%A7%E6%A8%99%E5%A4%89%E6%8F%9B">座標変換</h2>
-<p>$$
-\begin{aligned}
-&amp;\bold{X'(t)}=A\bold{X(t)}+Bu(t) \cr
-&amp;Y(t)=CX(t)+Du(t)
-\end{aligned}
-$$
-に対し、$\bold{X(t)=TZ(t)}$の線形変換を定義すると
-$$
-\begin{aligned}
-&amp;\bold{TZ'(t)}=A\bold{TZ(t)}+Bu(t) \cr
-&amp;Y(t)=C\bold{TZ(t)}+Du(t)
-\end{aligned}
-$$
-の左から$\bold{T^{-1}}$をかけて
-$$
-\begin{aligned}
-&amp;\bold{Z'(t)}=\bold{T^{-1}ATZ(t)}+\bold{T^{-1}}Bu(t) \cr
-&amp;Y(t)=C\bold{TZ(t)}+Du(t)
-\end{aligned}
-$$
-となる。$\bar{A}=\bold{T^{-1}AT}、\bar{B}=\bold{T^{-1}}B、\bar{C}=C\bold{T}$と置けば</p>
-<p>$$
-\begin{aligned}
-&amp;\bold{Z'(t)}=\bar{A}\bold{Z(t)}+\bar{B}u(t) \cr
-&amp;Y(t)=\bar{C}Z(t)+Du(t)
-\end{aligned}
-$$</p>
-<p>となる。なお、$\bar{A}=\bold{T^{-1}AT}は<a href="a">!a</a></p>
+より固有ベクトルは$\bold{P^{-1}}$をかけたものとなる。</p>
 
 </article>
 </body>
