@@ -598,7 +598,36 @@ $$
 &amp;Y(t)=\bar{C}Z(t)+Du(t)
 \end{aligned}
 $$</p>
-<p>となる。なお、$\bar{A}=\bold{T^{-1}AT}は<a href="a">!a</a></p>
+<p>となる。なお、$\bar{A}=\bold{T^{-1}AT}$は<a href="https://yukimaru77.github.io/practice/%E7%B7%9A%E5%BD%A2%E4%BB%A3%E6%95%B0(%E3%83%A1%E3%83%A2)/%E7%B7%9A%E5%BD%A2%E4%BB%A3%E6%95%B0(%E3%83%A1%E3%83%A2).html#%E7%9B%B8%E4%BC%BC%E3%81%AA%E8%A1%8C%E5%88%97">相似な行列</a>の定義そのもので固有値(=固有多項式)や行列式等の行列関係の諸量は等しくなる。固有ベクトルは$\bold{T^{-1}}$を掛けた値となる。</p>
+<h2 id="%E5%8F%AF%E5%88%B6%E5%BE%A1%E6%AD%A3%E6%BA%96%E5%BD%A2">可制御正準形</h2>
+<p>座標変換のうち特に
+$$
+\begin{aligned}
+&amp;\bold{Z'(t)}={{\begin{pmatrix}
+0 &amp; 1 &amp; 0 &amp; \qquad &amp;0 \cr
+0 &amp; 0 &amp; 1 &amp; \qquad &amp;0 \cr
+0 &amp; 0 &amp; 0 &amp; \qquad &amp;0 \cr
+\vdots &amp; &amp; &amp; \ddots &amp;1 \cr
+-α_0 &amp; -α_1 &amp; -α_2 &amp; \cdots &amp; -α_{n-1}
+\end{pmatrix}}}\bold{Z(t)}+{\begin{pmatrix}
+0 \cr
+0 \cr
+\vdots \cr
+0 \cr
+1
+\end{pmatrix}}u(t) \cr \cr
+&amp;Y(t)={\begin{pmatrix} β_1 &amp; β_2 &amp;\cdots &amp; β_n\end{pmatrix}}Z(t)+Du(t)
+\end{aligned}
+$$
+と表せる時、この表現形式を可制御正準形という。固有方程式は$\bold{A}、\bold{\bar{A}}$について、座標変換後も相似な行列の性質より不変な事に注意すると
+$$
+|sI-A|=|sI-\bar{A}|=s^n+a_{n-1}s^{n-1}+\cdots +a_1s+a_0=0
+$$
+となり、伝達関数は
+$$
+G(s)=\frac{β_ns^{n-1}+β_{n-1}s^{n-2}+\cdots +β_2s+β_1}{s^n+a_{n-1}s^{n-1}+\cdots +a_1s+a_0}
+$$
+となる。分子の方が次数が小さいので注意。テストで出るようなシステム制御の問題は基本プロパー(分子の次数＜分母の次数)になる(気がする)。</p>
 
 </article>
 </body>
