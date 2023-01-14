@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>アナログ電子回路.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+<link rel="stylesheet" href="file:///d%3A/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A6%E3%83%B3/practice/github-markdown.css" type="text/css">
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://yukimaru77.github.io/practice/github-markdown.css">
+<style>
+.markdown-body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+}
+
+@media (max-width: 767px) {
+.markdown-body {
+  padding: 15px;
+}
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ]
+    });
+  });
+  elements = document.getElementsByTagName("h2");
+  console.log(elements)
+
+</script>
+</head>
+<body>
+  <article class="markdown-body">
+<h1 id="%E3%82%A2%E3%83%8A%E3%83%AD%E3%82%B0%E9%9B%BB%E5%AD%90%E5%9B%9E%E8%B7%AF%E8%A3%9C%E8%B6%B3">アナログ電子回路補足</h1>
+<h2 id="%E8%A3%9C%E6%95%B0%E3%81%A8%E3%81%AF">補数とは</h2>
+<p>n進法において、<strong>桁上りが発生する最小の数</strong> を(n進数における)nの補数という。普段は(n進数における)は省略する。</p>
+<p>ついでに、 <strong>桁上りが発生しない最小の数</strong> を(n進数における)n-1の補数という。普段は(n進数における)は省略する。</p>
+<p>例えば2進数$10010_2=18_{10}$について
+2の補数は$1110_2$となり、1の補数は$1101_2$</p>
+<h2 id="%E8%B2%A0%E6%95%B0%E3%81%AE%E8%A1%A8%E7%8F%BE">負数の表現</h2>
+<p>以下2進数の話とする。負数の表現は2進数aの表現方法を2の補数表現、1の補数表現、サインマグニチュード(絶対値表現)、オフセットバイナリ(オフセット表現)などにすることによって異なってくる。</p>
+<h2 id="2%E3%81%AE%E8%A3%9C%E6%95%B0%E8%A1%A8%E7%8F%BE">2の補数表現</h2>
+<p>2進数nbitで表された数a($0&lt;a&lt;2^n-1$)に対し、aはmbitで表せるとする。aに対し、-aをaの2の補数(足りない部分mbitまでは0埋めそこから先は1埋め)としたものとして定義する表現方法。
+例えばn=8、
+$$
+a=00001101_2(=13_{10})
+$$
+とすると13の2補数は
+$$
+13の2の補数=11_2
+$$
+aは4bitで表せる数なのでm=4であるので、-aは4bitまでは0埋めそこから先は1埋めとなり
+$$
+-a:=11110011_2
+$$
+となる。</p>
+<h2 id="1%E3%81%AE%E8%A3%9C%E6%95%B0%E8%A1%A8%E7%8F%BE">1の補数表現</h2>
+<p>2進数nbitで表された数a($0&lt;a&lt;2^n-1$)に対し、aはmbitで表せるとする。aに対し、-aをaの1の補数(足りない部分mbitまでは0埋めそこから先は1埋め)としたものとして定義する表現方法。
+例えばn=8、
+$$
+a=00001101_2(=13_{10})
+$$
+とすると13の1補数は
+$$
+13の2の補数=10_2
+$$
+aは4bitで表せる数なのでm=4であるので、-aは4bitまでは0埋めそこから先は1埋めとなり
+$$
+-a:=11110010_2
+$$
+となる。</p>
+<h2 id="%E3%82%B5%E3%82%A4%E3%83%B3%E3%83%9E%E3%82%B0%E3%83%8B%E3%83%81%E3%83%A5%E3%83%BC%E3%83%89%E7%B5%B6%E5%AF%BE%E5%80%A4%E8%A1%A8%E7%8F%BE">サインマグニチュード(絶対値表現)</h2>
+<p>2進数nbitで表された数a($0&lt;a&lt;2^n-1$)に対し、-aを先頭bitを1にしたものとして定義する表現方法。例えばn=8とすると
+例えば
+$$
+a=00001111_2 →-a:=10001111_2
+$$
+となる。</p>
+<h2 id="%E3%82%AA%E3%83%95%E3%82%BB%E3%83%83%E3%83%88%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E3%82%AA%E3%83%95%E3%82%BB%E3%83%83%E3%83%88%E8%A1%A8%E7%8F%BE">オフセットバイナリ(オフセット表現)</h2>
+<p>$読み取った値-オフセット値$として数を定義する方法。
+例えばオフセット値を10000000とし、3を表したい場合
+$$
+10000011-10000000=00000011
+$$
+なので$3:=10000011$と定義される。</p>
+<h2 id="%E4%BB%A3%E6%95%B0%E7%B3%BB">代数系</h2>
+<p>まず、少しだけ代数系の記号の意味について説明していく。</p>
+<h3 id="%E7%84%A1%E9%99%90%E9%9B%86%E5%90%88%E3%81%A8%E6%9C%89%E9%99%90%E9%9B%86%E5%90%88">無限集合と有限集合</h3>
+<p>集合$A$の要素が無限個ある場合、$A$を無限集合といい、有限個の場合を有限集合という。有限集合の場合、演算子等の定義が楽に出来る。</p>
+<h3 id="%E6%BC%94%E7%AE%97">演算</h3>
+<p>$A$を集合とし、$x,y\in A$とする。写像〇(x,y)を考え、
+$$
+写像〇:A×A \quad→\quad A \quad|\quad 〇(x,y)=z
+$$
+をA上の演算というう、〇(x,y)をx〇yと表記する。集合Aと一つ以上の演算〇が定義されている時(A,〇)を <strong>代数系</strong> という。</p>
+<h3 id="%E4%BD%9C%E7%94%A8">作用</h3>
+<p>$A$を集合とし、$x\in A$とする。写像☆(x)を考え、
+$$
+写像☆:A \quad→\quad A \quad|\quad ☆(x)=y
+$$
+を作用という。</p>
+<h2 id="%E3%83%96%E3%83%BC%E3%83%AB%E4%BB%A3%E6%95%B0">ブール代数</h2>
+<p>Bは少なくても記号(0,1)を含むとする。$x,y\in B$に対し、演算$+、\cdot$と作用$\bar{\quad}$が定義され、以下の4つの性質が成り立つとき、( B,+,×,$\bar{\quad}$ )をブール代数、または単にBをブール代数という。</p>
+<ol>
+<li>交換則
+$$
+x\cdot y=y\cdot x、\quad x+y=y+x
+$$</li>
+<li>単位元の存在(単位元律)
+$$
+x\cdot 1=x、\quad x+0=x
+$$</li>
+<li>相補則
+$$
+x\cdot \bar{x}=0、\quad x+\bar{x}=1
+$$</li>
+<li>分配測
+$$
+a\cdot (b+c)=a\cdot b+a\cdot c、a+b\cdot c=(a+b)\cdot(a+c)
+$$</li>
+</ol>
+<p>この性質を満たせばブール代数を名乗れるため、演算$+、\cdot$と作用$\bar{\quad}$の定義方法は色々あるが例えば
+$$
+\begin{aligned}
+&amp;0+0=0、0+1=1、1+0=1、1+1=1 \cr
+&amp;0\cdot 0=0、0\cdot 1=0、1\cdot 0=0、1\cdot 1=1 \cr
+&amp;\bar{0}=1、\bar{1}=0
+\end{aligned}
+$$
+が各演算及び作用の定義となる。</p>
+<h2 id="%E5%8F%8C%E5%AF%BE%E5%AE%9A%E7%90%86">双対定理</h2>
+<p>双対定理はたまに役に立つので紹介する。ブール代数において$&quot;+&quot;と&quot;\cdot &quot;$、$&quot;0&quot;と&quot;1&quot;$を交換しても恒等式は成り立つという定理が公理から導ける。ただし計算順序はそのままにしなければならない。</p>
+<p>例えば
+$$
+a\cdot (b + c)+0 = (a\cdot b) + (a\cdot c)+0
+$$
+が成り立っているとき
+$$
+a+(b \cdot c)\cdot 1=(a+ b) \cdot (a+ c) \cdot 1
+$$
+も成り立つ。</p>
+<p>例えば問題として
+$$
+A+\bar{A}\cdot B=A+Bを示せ。
+$$
+とあった場合、双対を取って
+$$
+A\cdot(\bar{A}+ B)=A\cdot B
+$$
+を示せば問題を解いたことになる。</p>
+<h2 id="%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E3%83%96%E3%83%BC%E3%83%AB%E4%BB%A3%E6%95%B0%E3%81%AE%E6%80%A7%E8%B3%AA">その他のブール代数の性質</h2>
+<p>具体的な説明は省くが、等式を証明する場合、機械的な方法で証明が出来るシャノン展開という方法もある。興味があったら調べてみよう。</p>
+<p>完全系という概念を導入すると(and-or-not)系は(nand)系と同様完全なことが分かったり(つまりすべての論理式はnandのみで表せる)とそーゆうのもある。</p>
+<p>最小項、最大項、主加法標準形、主乗法標準、ドモルガンの法則など。。</p>
+<h2 id="%E8%AB%96%E7%90%86%E6%BC%94%E7%AE%97%E3%81%A8%E3%83%96%E3%83%BC%E3%83%AB%E4%BB%A3%E6%95%B0%E3%81%AE%E9%96%A2%E4%BF%82">論理演算とブール代数の関係</h2>
+<p>命題変数pは真なら1、偽なら0を取るとする。例えば
+$$
+\begin{aligned}
+&amp;1(電圧xがしきい値を超える。)\cr
+p(x)=&amp; \cr
+&amp;0(電圧xがしきい値を超えない。)
+\end{aligned}
+$$
+などとなる。ここで集合Bを
+$$
+Ｂ＝｛ｐ｜ｐ：命題変数｝∪｛０,１｝
+$$
+とし(つまりBは論理変数pと論理定数0,1の和集合)、演算$+、\cdot$と作用$\bar{\quad}$を
+$$
++:論理和、\quad
+\cdot :論理積、\quad
+\bar{\quad} :否定
+$$
+と定義するとBはブール代数となる。よって論理演算がブール代数の構造を持つのでブール代数が適応できる。</p>
+<h2 id="%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E5%9B%9E%E8%B7%AF%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%96%E3%83%BC%E3%83%AB%E4%BB%A3%E6%95%B0">デジタル回路におけるブール代数</h2>
+<p>さすがに記号だけじゃわかりにくいかなと思ったので具体例ものせた追加資料参照。</p>
+<h2 id="%E3%82%AB%E3%83%AB%E3%83%8E%E3%83%BC%E5%9B%B3%E3%81%AE%E6%B0%97%E6%8C%81%E3%81%A1">カルノー図の気持ち</h2>
+<p>例えば以下のようなf(x,y,z)を考えてみる。</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>y</th>
+<th>z</th>
+<th>f(x,y,z)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>これに対し$f_1、f_2、f_3、f_4$を以下のように定義する。</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>y</th>
+<th>z</th>
+<th>f(x,y,z)</th>
+<th>$f_1$</th>
+<th>$f_2$</th>
+<th>$f_3$</th>
+<th>$f_4$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>とすると
+$$
+f(x、y、z)=f_1(x、y、z)+f_2(x、y、z)+f_3(x、y、z)+f_4(x、y、z)
+$$
+となり、後は見れば簡単に
+$$
+f(x、y、z)=\bar x\cdot \bar y\cdot z+\bar x\cdot y\cdot z+x\cdot y \cdot \bar z+x\cdot y\cdot z
+$$
+となる。ちなみにこの表し方を主加法標準形と言ったりする。ここで式を簡略化することを考える。具体的には、吸収則
+$$
+a\cdot b + a\cdot \bar b=a
+$$
+の性質を用いる。すると
+$$
+\begin{aligned}
+&amp;\bar x\cdot \bar y\cdot z+\bar x\cdot y\cdot z=\bar x\cdot z \cr
+&amp;x\cdot y \cdot \bar z+x\cdot y\cdot z=x\cdot y
+\end{aligned}
+$$
+より
+$$
+f(x、y、z)=\bar x\cdot z+x\cdot y
+$$
+となる。ここで先ほどの真理値表の順番を意図的に変えてもう一度見てみる。</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>y</th>
+<th>z</th>
+<th>f(x,y,z)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>f(x,y,z)が1の部分に注目する。まず</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>y</th>
+<th>z</th>
+<th>f(x,y,z)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>を見るとx、y、zは1bitのずれ(yだけ異なる。)でf(x,y,z)=1である。よって吸収則を適用し、f(x,y,z)は$\bar x\cdot z$を含む事がすぐわかる。同様に</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>y</th>
+<th>z</th>
+<th>f(x,y,z)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>もx、y、zは1bitのずれ(zだけ異なる。)でf(x,y,z)=1である。よって吸収則を適用し、f(x,y,z)は$x\cdot y$を含む事がすぐわかる。</p>
+<p>ここでポイントとなるのは <strong>1bit分だけ入力が異なる</strong> という点にある。真理値表の問題点はf(x,y,z)の場合すべての(x,y,z)について1bit分だけ入力が異なる入力が3つ存在するにもかかわらず、隣り合せに出来ない点にある。カルノー図はそこを克服している。</p>
+<table>
+<thead>
+<tr>
+<th>x/yz</th>
+<th>00</th>
+<th>01</th>
+<th>11</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>カルノー図を見るとすべての入力に対し境界がつながっていると仮定すれば、1bit分だけ入力が異なる入力が3つ隣り合っている。本質は1bit差で隣り合うことだけなので表記は色々方法があり例えば</p>
+<table>
+<thead>
+<tr>
+<th>x/yz</th>
+<th>11</th>
+<th>01</th>
+<th>00</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>でも</p>
+<table>
+<thead>
+<tr>
+<th>x/yz</th>
+<th>00</th>
+<th>10</th>
+<th>11</th>
+<th>01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>でも構わないことが分かるだろう。</p>
+<h2 id="static-cmos%E5%9B%9E%E8%B7%AF">Static CMOS回路</h2>
+<p>cmos回路はnmos回路とpmos回路を用いて構成されるが、特にnmosとpmosを相補的に接続した場合、それをStatic CMOS回路という。ゲート(nand、nor、and、or、not、AOI、OAI、……etc)はすべて相補的に接続されている。</p>
+
+</article>
+</body>
+<script>
+	elements = document.getElementsByTagName("h2");
+	table_of_contents = document.createElement("ul");
+	h2=document.createElement("h2");
+	h2.textContent="目次"
+	table_of_contents.appendChild(h2)
+	for (  var i = 0;  i < elements.length;  i++  ) {
+		console.log(elements[ i ]);
+		const newElement_li = document.createElement("li");
+		const newElement_a = document.createElement("a");
+		newElement_a.href="#"+elements[ i ].id;
+		newElement_a.textContent = elements[ i ].textContent;
+		newElement_li.appendChild(newElement_a);
+		table_of_contents.appendChild(newElement_li);
+		
+	}
+	parents=document.getElementsByClassName("markdown-body")[0];
+	h1 = document.getElementsByTagName("h1")[0];
+	parents.insertBefore(table_of_contents, h1.nextSibling)
+</script>
+</html>
