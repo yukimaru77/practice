@@ -401,7 +401,7 @@ padding: 45px;
 <h2 id="%E8%B2%A0%E6%95%B0%E3%81%AE%E8%A1%A8%E7%8F%BE">負数の表現</h2>
 <p>以下2進数の話とする。負数の表現は2進数aの表現方法を2の補数表現、1の補数表現、サインマグニチュード(絶対値表現)、オフセットバイナリ(オフセット表現)などにすることによって異なってくる。</p>
 <h2 id="2%E3%81%AE%E8%A3%9C%E6%95%B0%E8%A1%A8%E7%8F%BE">2の補数表現</h2>
-<p>2進数nbitで表された数a($0&lt;a&lt;2^n-1$)に対し、aはmbitで表せるとする。aに対し、-aをaの2の補数(足りない部分mbitまでは0埋めそこから先は1埋め)としたものとして定義する表現方法。
+<p>2進数nbitで表された数a($0&lt;a&lt;2^{n-1}$)に対し、aはmbitで表せるとする。aに対し、-aをaの2の補数(足りない部分mbitまでは0埋めそこから先は1埋め)としたものとして定義する表現方法。
 例えばn=8、
 $$
 a=00001101_2(=13_{10})
@@ -917,26 +917,26 @@ $$
 <h2 id="static-cmos%E5%9B%9E%E8%B7%AF">Static CMOS回路</h2>
 <p>cmos回路はnmos回路とpmos回路を用いて構成されるが、特にnmosとpmosを相補的に接続した場合、それをStatic CMOS回路という。ゲート(nand、nor、not、AOI、OAI、……etc)はすべて相補的に接続されている。相補的に接続すると必ず電流が流れるパスがなくなり消費電力を抑えられる。</p>
 <p>相補的に接続とはPMOSはプルアップ(電源側につける)し、NMOSはプルダウン(接地側につける)を施しさらにPMOSが直列ならNMOSは並列にするといったつなぎ方をする。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/相補的接続.png" alt="画像がなかった時の代替テキスト">
-<img src="https://yukimaru77.github.io/practice/アナログ電子回路/AOI.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/相補的接続.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/AOI.png" alt="画像がなかった時の代替テキスト"></p>
 <h2 id="%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%89%E3%83%AC%E3%82%A4%E3%83%B3%E5%9B%9E%E8%B7%AF">オープンドレイン回路</h2>
-<p>オープンドレイン回路とはそのままの意味でドレインに何もつながっておらず、プルアップ抵抗を用いて外部電源に接続し、high及びlowを制御する回路である。プルアップ抵抗を付けない場合、導通の時にショートしてしまう。
-<img src="https://yukimaru77.github.io/practice/アナログ電子回路/オープンドレイン.png" alt="画像がなかった時の代替テキスト"></p>
+<p>オープンドレイン回路とはそのままの意味でドレインに何もつながっておらず、プルアップ抵抗を用いて外部電源に接続し、high及びlowを制御する回路である。プルアップ抵抗を付けない場合、導通の時にショートしてしまう。</p>
+<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/オープンドレイン.png" alt="画像がなかった時の代替テキスト"></p>
 <h2 id="%E6%A7%98%E3%81%AA%E5%9B%9E%E8%B7%AF">様々な回路</h2>
 <h3 id="%E3%82%B2%E3%83%BC%E3%83%88%E5%9B%9E%E8%B7%AF%E3%81%A8%E3%82%BB%E3%83%AC%E3%82%AF%E3%82%BF%E5%9B%9E%E8%B7%AF">ゲート回路とセレクタ回路。</h3>
-<p>そのままの意味。
-<img src="https://yukimaru77.github.io/practice/アナログ電子回路/ゲート回路セレクタ回路.png" alt="画像がなかった時の代替テキスト"></p>
+<p>そのままの意味。</p>
+<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/ゲート回路セレクタ回路.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="%E5%8D%8A%E5%8A%A0%E7%AE%97%E5%9B%9E%E8%B7%AF">半加算回路</h3>
-<p>半加算回路はA+Bを計算してCは桁上り、Sはsumの略で計算結果となる。
-<img src="https://yukimaru77.github.io/practice/アナログ電子回路/半加算回路.png" alt="画像がなかった時の代替テキスト"></p>
+<p>半加算回路はA+Bを計算してCは桁上り、Sはsumの略で計算結果となる。</p>
+<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/半加算回路.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="%E5%85%A8%E5%8A%A0%E7%AE%97%E5%99%A8">全加算器</h3>
-<p>全加算回路は$A+B+C_{in}$を計算して$C_{out}$は桁上り、Sはsumの略で計算結果となる。全加算回路を複数つなげると加算器が作れる。
-<img src="https://yukimaru77.github.io/practice/アナログ電子回路/全加算回路.png" alt="画像がなかった時の代替テキスト"></p>
+<p>全加算回路は$A+B+C_{in}$を計算して$C_{out}$は桁上り、Sはsumの略で計算結果となる。全加算回路を複数つなげると加算器が作れる。</p>
+<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/全加算回路.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="%E3%81%8B%E3%81%8E%E5%9E%8B%E6%A7%8B%E9%80%A0">かぎ型構造</h3>
-<p>以下の回路は2つの安定状態を持つ。よって2値を保持できる回路となっている。記憶素子は値を保持中の時はこの構造になっている。
-<img src="https://yukimaru77.github.io/practice/アナログ電子回路/かぎ型構造.png" alt="画像がなかった時の代替テキスト"></p>
+<p>以下の回路は2つの安定状態を持つ。よって2値を保持できる回路となっている。記憶素子は値を保持中の時はこの構造になっている。</p>
+<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/かぎ型構造.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="%E3%83%A9%E3%83%83%E3%83%81%E5%9B%9E%E8%B7%AF">ラッチ回路</h3>
-<p>Contが1の時は信号Inをそのまま通し、Countが0の時は$\overline{A \cdot 1} = \bar A$の性質に着目すると下の図のようになりかぎ型構造が出来る為値を保持できる、
+<p>Contが1の時は信号Inをそのまま通し、Countが0の時は$\overline{A \cdot 1} = \bar A$の性質に着目すると下の図のようになりかぎ型構造が出来る為値を保持できる。
 <img src="https://yukimaru77.github.io/practice/アナログ電子回路/ラッチ.png" alt="画像がなかった時の代替テキスト"></p>
 <p><strong>Countが0の時↓</strong></p>
 <p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/ラッチ0.png" alt="画像がなかった時の代替テキスト"></p>
