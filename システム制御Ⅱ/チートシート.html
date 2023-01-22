@@ -805,19 +805,19 @@ $$
 <p>先ほども述べたように一般に、状態変数は直接観測できない。しかし、状態フィードバックは安定性のために施したいが肝心な状態変数がわからない。よって状態変数の&quot;推定量&quot;を求めることを考える。推定量が正しく推定できているならそれをフィードバックすることで状態フィードバックと同じ結果を得られるはずでだからである。</p>
 <p>ここで、作為的ではあるがxの推定量(オブザーバ)$\hat{x}$は元のシステムの文字とkベクトル($k={}^T[k_1 \quad k_2 \quad\cdots k_n]$)を用いて、以下のシステムによって与えられるものと定義する。オブザーバが正しくxを推定できるようなkが存在するか確認する。</p>
 <p>$$
-.{\hat{x}}=A\hat{x}+Bu(t)+K(y(t)-C\hat{x})
+\dot{\hat{x}}=A\hat{x}+Bu(t)+K(y(t)-C\hat{x})
 $$</p>
 <p>誤差eは$e(t)=x(t)-\hat{x}(t)$とすれば、
 $$
 \begin{aligned}
-.e(t)&amp;=.x(t)-.{\hat{x}}\cr
+\dot e(t)&amp;=\dot x(t)-\dot{\hat{x}}\cr
 &amp;=(A-KC)e(t)
 \end{aligned}
 $$
 となる。よって$(A-KC)$が漸近安定であればどんな初期推定誤差e(0)に対してもt→∞とすれば0となる。ここで可観測正準形に変形すると、
 $$
-.e(t)=(A-KC)e(t)\quad→ \quad
-.{\bar e}(t)=(\bar A-\bar K\bar C)\bar e(t)
+\dot e(t)=(A-KC)e(t)\quad→ \quad
+\dot{\bar e}(t)=(\bar A-\bar K\bar C)\bar e(t)
 $$
 となる。ただし$K=T\bar K$である。$(\bar A-\bar K\bar C)$の固有多項式は計算すると
 $$
@@ -829,7 +829,7 @@ $$
 $$
 \begin{aligned}
 &amp;u(t)=F\hat{x}\cr
-&amp;.{\hat{x}}=A\hat{x}+Bu(t)+K(y(t)-C\hat{x})
+&amp;\dot{\hat{x}}=A\hat{x}+Bu(t)+K(y(t)-C\hat{x})
 \end{aligned}
 $$
 とする。これを出力フィードバック則という。出力フィードバック則によって設計したシステムの固有値と誤差システムの固有値は状態フィードバック則とオブザーバを独立に考えたときの固有値とそれぞれ等しくなり、これを分離原理という。</p>
