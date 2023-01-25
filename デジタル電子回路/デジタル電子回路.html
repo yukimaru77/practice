@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>アナログ電子回路.md</title>
+<title>デジタル電子回路.md</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
 <style>
@@ -392,7 +392,7 @@ padding: 45px;
 </head>
 <body>
   <article class="markdown-body">
-<h1 id="%E3%82%A2%E3%83%8A%E3%83%AD%E3%82%B0%E9%9B%BB%E5%AD%90%E5%9B%9E%E8%B7%AF">アナログ電子回路</h1>
+<h1 id="%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E9%9B%BB%E5%AD%90%E5%9B%9E%E8%B7%AF">デジタル電子回路</h1>
 <h2 id="%E8%A3%9C%E6%95%B0%E3%81%A8%E3%81%AF">補数とは</h2>
 <p>n進法において、<strong>桁上りが発生する最小の数</strong> を(n進数における)nの補数という。普段は(n進数における)は省略する。</p>
 <p>ついでに、 <strong>桁上りが発生しない最小の数</strong> を(n進数における)n-1の補数という。普段は(n進数における)は省略する。</p>
@@ -401,6 +401,7 @@ padding: 45px;
 <h2 id="%E8%B2%A0%E6%95%B0%E3%81%AE%E8%A1%A8%E7%8F%BE">負数の表現</h2>
 <p>以下2進数の話とする。負数の表現は2進数aの表現方法を2の補数表現、1の補数表現、サインマグニチュード(絶対値表現)、オフセットバイナリ(オフセット表現)などにすることによって異なってくる。</p>
 <h2 id="2%E3%81%AE%E8%A3%9C%E6%95%B0%E8%A1%A8%E7%8F%BE">2の補数表現</h2>
+<p>やることはひっくり返して1足すだけ。</p>
 <p>2進数nbitで表された数a($0&lt;a&lt;2^{n-1}$)に対し、aはmbitで表せるとする。aに対し、-aをaの2の補数(足りない部分mbitまでは0埋めそこから先は1埋め)としたものとして定義する表現方法。
 例えばn=8、
 $$
@@ -416,6 +417,7 @@ $$
 $$
 となる。</p>
 <h2 id="1%E3%81%AE%E8%A3%9C%E6%95%B0%E8%A1%A8%E7%8F%BE">1の補数表現</h2>
+<p>やることはひっくり返えすだけ。</p>
 <p>2進数nbitで表された正数a($0&lt;a&lt;2^{n-1}$)に対し、aはmbitで表せるとする。aに対し、-aをaの1の補数(足りない部分mbitまでは0埋めそこから先は1埋め)としたものとして定義する表現方法。
 例えばn=8、
 $$
@@ -444,6 +446,7 @@ $$
 10000011-10000000=00000011
 $$
 なので$3:=10000011$と定義される。</p>
+<h2 id="%E4%BD%99%E8%AB%87">---------余談-----------</h2>
 <h2 id="%E4%BB%A3%E6%95%B0%E7%B3%BB">代数系</h2>
 <p>まず、少しだけ代数系の記号の意味について説明していく。</p>
 <h3 id="%E7%84%A1%E9%99%90%E9%9B%86%E5%90%88%E3%81%A8%E6%9C%89%E9%99%90%E9%9B%86%E5%90%88">無限集合と有限集合</h3>
@@ -533,6 +536,7 @@ $$
 \bar{\quad} :否定
 $$
 と定義するとBはブール代数となる。よって論理演算がブール代数の構造を持つのでブール代数が適応できる。</p>
+<h2 id="%E4%BD%99%E8%AB%87%E7%B5%82%E3%82%8F%E3%82%8A">-------余談終わり--------------</h2>
 <h2 id="%E3%82%AB%E3%83%AB%E3%83%8E%E3%83%BC%E5%9B%B3%E3%81%AE%E6%B0%97%E6%8C%81%E3%81%A1">カルノー図の気持ち</h2>
 <p>例えば以下のようなf(x,y,z)を考えてみる。</p>
 <table>
@@ -915,32 +919,32 @@ $$
 <h2 id="static-cmos%E5%9B%9E%E8%B7%AF">Static CMOS回路</h2>
 <p>cmos回路はnmos回路とpmos回路を用いて構成されるが、特にnmosとpmosを相補的に接続した場合、それをStatic CMOS回路という。ゲート(nand、nor、not、AOI、OAI、……etc)はすべて相補的に接続されている。相補的に接続すると必ず電流が流れるパスがなくなり消費電力を抑えられる。</p>
 <p>相補的に接続とはPMOSはプルアップ(電源側につける)し、NMOSはプルダウン(接地側につける)を施しさらにPMOSが直列ならNMOSは並列にするといったつなぎ方をする。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/相補的接続.png" alt="画像がなかった時の代替テキスト"></p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/AOI.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/相補的接続.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/AOI.png" alt="画像がなかった時の代替テキスト"></p>
 <h2 id="%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%89%E3%83%AC%E3%82%A4%E3%83%B3%E5%9B%9E%E8%B7%AF">オープンドレイン回路</h2>
 <p>オープンドレイン回路とはそのままの意味でドレインに何もつながっておらず、プルアップ抵抗を用いて外部電源に接続し、high及びlowを制御する回路である。プルアップ抵抗を付けない場合、導通の時にショートしてしまう。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/オープンドレイン.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/オープンドレイン.png" alt="画像がなかった時の代替テキスト"></p>
 <h2 id="%E6%A7%98%E3%81%AA%E5%9B%9E%E8%B7%AF">様々な回路</h2>
-<h3 id="%E3%82%B2%E3%83%BC%E3%83%88%E5%9B%9E%E8%B7%AF%E3%81%A8%E3%82%BB%E3%83%AC%E3%82%AF%E3%82%BF%E5%9B%9E%E8%B7%AF">ゲート回路とセレクタ回路。</h3>
+<h3 id="%E3%82%B2%E3%83%BC%E3%83%88%E5%9B%9E%E8%B7%AF%E3%81%A8%E3%82%BB%E3%83%AC%E3%82%AF%E3%82%BF%E5%9B%9E%E8%B7%AF">ゲート回路とセレクタ回路</h3>
 <p>そのままの意味。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/ゲート回路セレクタ回路.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/ゲート回路セレクタ回路.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="%E5%8D%8A%E5%8A%A0%E7%AE%97%E5%9B%9E%E8%B7%AF">半加算回路</h3>
 <p>半加算回路はA+Bを計算してCは桁上り、Sはsumの略で計算結果となる。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/半加算回路.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/半加算回路.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="%E5%85%A8%E5%8A%A0%E7%AE%97%E5%99%A8">全加算器</h3>
 <p>全加算回路は$A+B+C_{in}$を計算して$C_{out}$は桁上り、Sはsumの略で計算結果となる。全加算回路を複数つなげると加算器が作れる。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/全加算回路.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/全加算回路.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="%E3%81%8B%E3%81%8E%E5%9E%8B%E6%A7%8B%E9%80%A0">かぎ型構造</h3>
 <p>以下の回路は2つの安定状態を持つ。よって2値を保持できる回路となっている。記憶素子は値を保持中の時はこの構造になっている。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/かぎ型構造.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/かぎ型構造.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="%E3%83%A9%E3%83%83%E3%83%81%E5%9B%9E%E8%B7%AF">ラッチ回路</h3>
 <p>Contが1の時は信号Inをそのまま通し、Countが0の時は$\overline{A \cdot 1} = \bar A$の性質に着目すると下の図のようになりかぎ型構造が出来る為値を保持できる。
-<img src="https://yukimaru77.github.io/practice/アナログ電子回路/ラッチ.png" alt="画像がなかった時の代替テキスト"></p>
+<img src="https://yukimaru77.github.io/practice/デジタル電子回路/ラッチ.png" alt="画像がなかった時の代替テキスト"></p>
 <p><strong>Countが0の時↓</strong></p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/ラッチ0.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/ラッチ0.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="rs-ff%E5%9B%9E%E8%B7%AF">RS-FF回路</h3>
 <p>セットリセット付きフリップフロップ。セット(S)が1の時はQに1をセットし、リセット(R)が2の時はQを0にリセットする。$S=R=0$の時はかぎ型構造となるため値を保持。$S=R=1$の時は$Q=Q_b=1$となるが、$S=R=1→S=R=0$と遷移させるとかぎ型構造の構成上$\bar Q = Q_b$となるため$Q=Q_b=1$は保持させることが出来ずどちらかに遷移してしまう。具体的にどちらに遷移するかはR→0が早ければQ=1、S→0が早ければQ=0が保持されることとなりどちらになるかはわからないため禁止入力としている。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/RS-FF.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/RS-FF.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%B9%E3%83%AC%E3%83%BC%E3%83%96%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97dff">マスタースレーブフリップフロップ(DFF)</h3>
 <p>前段をマスター(主人)、後段をスレーブ(奴隷)と呼ぶ。</p>
 <ol>
@@ -949,7 +953,7 @@ $$
 <li>Clockが1の時、マスター側は保持状態よりその後段のスレーブもDの入力を受け付けない。よってClockが1の時にDを変化させても$Q_o$は変化しない。</li>
 </ol>
 <p>実際はフリップフロップには値が滲みだす時間(遅延時間のこと。造語だがイメージしやすいと思う)があるためセットアップ時間(Clockが1に立ち上がる少し前までにDが確定していないと思った通りの値にならない)等の制約があるのだが特に言及されていないため詳しくは話さない。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/マスタースレーブ.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/マスタースレーブ.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="2n%E5%88%86%E5%91%A8%E5%9B%9E%E8%B7%AF">$2^n$分周回路</h3>
 <p>これから様々な分周回路を説明していくが初期状態はデジタル回路の各点において矛盾が無ければ内部状態Qの値は任意であるので好きな値を設定する。</p>
 <p>以下の図において初期状態(0回目の立ち上がり、スタート地点)を$Q_0=1、Q_1=0$とする。(言っている意味がわからない場合下にあるタイミングチャートのスタート地点を参照)</p>
@@ -960,8 +964,8 @@ $$
 <li>四回目の立ち上がりで$Q_0=Q_{0b}=1$に変化する。一方$C_1$目線は立ち上がりなので$Q_1=Q_b=0$に変化する。
 よってこれを図にすると以下のタイミングチャートになる。今回は素子を2つ使ったため$2^2=4$回のCLK立ち上がりで1周期となる4分周回路となったがn個付けると$2^n$分周回路となる。</li>
 </ol>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/2n分周.png" alt="画像がなかった時の代替テキスト">
-<img src="https://yukimaru77.github.io/practice/アナログ電子回路/タイミングチャート.jpg" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/2n分周.png" alt="画像がなかった時の代替テキスト">
+<img src="https://yukimaru77.github.io/practice/デジタル電子回路/タイミングチャート.jpg" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="2n%E5%88%86%E5%91%A8%E5%9B%9E%E8%B7%AF">2n分周回路</h3>
 <p>初期状態(0回目の立ち上がり、スタート地点)を$Q_0=0、Q_1=0$とする。</p>
 <ol>
@@ -971,13 +975,13 @@ $$
 <li>四回目の立ち上がりで$Q_0=Q_{b}=0$、$Q_1=Q_{0前}=0$</li>
 </ol>
 <p>よって初期状態に戻った。$2×2=4$回のCLK立ち上がりで1周期となる4分周回路となったがn個付けると$2×n$分周回路となる。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/2_n.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/2_n.png" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="2n-1%E5%88%86%E5%91%A8%E5%9B%9E%E8%B7%AF">2n-1分周回路</h3>
 <p>手書きの図で説明する。Dffをn個とすると2n-1分周回路となる。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/7分周回路.jpg" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/7分周回路.jpg" alt="画像がなかった時の代替テキスト"></p>
 <h3 id="n-bit%E3%83%AA%E3%83%83%E3%83%97%E3%83%AB%E3%82%AD%E3%83%A3%E3%83%AA%E3%83%BC%E5%9B%9E%E8%B7%AF">n-bitリップルキャリー回路</h3>
 <p>さすがに有名なので割愛。やってることはそのままただのひっ算である。ちなみにこの回路でx-yを行いたい場合は最下段の$c_i$である$C_{i0}=1$とし、yを&quot;1&quot;の補数に変換すれば出来る。また、最上段の$C_o$をフラグレジスタにつなげることもよくある。が特に説明がないのでここでも説明しない。</p>
-<p><img src="https://yukimaru77.github.io/practice/アナログ電子回路/リップルキャリー.png" alt="画像がなかった時の代替テキスト"></p>
+<p><img src="https://yukimaru77.github.io/practice/デジタル電子回路/リップルキャリー.png" alt="画像がなかった時の代替テキスト"></p>
 <h2 id="%E8%AB%96%E7%90%86%E5%BC%8F%E3%81%AE%E5%A4%89%E5%BD%A2%E3%81%AE%E3%82%B3%E3%83%84%E5%AE%8C%E5%85%A8%E3%81%AB%E3%83%86%E3%82%B9%E3%83%88%E5%AF%BE%E7%AD%96%E5%B0%82%E7%94%A8%E7%9F%A5%E8%AD%98">論理式の変形のコツ(完全にテスト対策専用知識)</h2>
 <p>2入力nand、2入力nor、invの3素子合計n個で表せとかいうくそ問題について。</p>
 <ul>
