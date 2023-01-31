@@ -543,7 +543,7 @@ $$
 $$
 \sum_{k=1}^{n}c_ia_i=0
 $$
-を満たす$c_i$が$c_i=0$しか存在しない場合、ベクトルの集合$a_i$が <strong>線形独立</strong> という。あるベクトル空間の任意の元が <strong>線形独立</strong> ベクトルの集合 ${v_k}<em>{k=1}^{i=n}$ で表せるとき、ベクトルの集合${v_k}</em>{k=1}^{i=n}$を  <strong>基底と呼び、次元はnとなる。</strong></p>
+を満たす$c_i$が$c_i=0$しか存在しない場合、ベクトルの集合$a_i$が <strong>線形独立</strong> という。あるベクトル空間の任意の元が <strong>線形独立</strong> ベクトルの集合 $\lbrace v_k\rbrace _{k=1}^{i=n}$ で表せるとき、ベクトルの集合$\lbrace v_k\rbrace _{k=1}^{i=n}$を  <strong>基底と呼び、次元はnとなる。</strong></p>
 <h3 id="%E3%81%A1%E3%82%87%E3%81%A3%E3%81%A8%E3%81%A0%E3%81%91%E4%BE%8B%E9%A1%8C">ちょっとだけ例題</h3>
 <p>$$
 a_1={^t}[1、2、-1]、a_2={^t}[2、3、1]、a_3={^t}[1、3、4]
@@ -574,7 +574,7 @@ $$
 <h3 id="%E9%83%A8%E5%88%86%E7%A9%BA%E9%96%93%E3%81%AE%E4%BE%8B">部分空間の例</h3>
 <p>線形空間Vの$a_1、\cdots、a_k\in{V}$に対し、集合Wを
 $$
-W={x|x=c_1a_1+\cdots+c_ka_k、c_i\in{R}}
+W=\lbrace x|x=c_1a_1+\cdots+c_ka_k、c_i\in{R}\rbrace
 $$
 なる集合WはVの部分空間である。ここで、Wは$a_1、～、a_k$で&quot;張られる空間&quot;とよび、$a_1、\cdots、a_k$をWの生成元という。<strong>生成元は線形独立でなくてもいい点に注意。</strong></p>
 <h2 id="%E7%B7%9A%E5%BD%A2%E5%86%99%E5%83%8F%E5%83%8Fimf%E6%A0%B8kerf">線形写像、像(Imf)、核(Kerf)</h2>
@@ -600,12 +600,12 @@ $$
 $$
 となることもわかる。また、$Imf$は
 $$
-Imf=f(V)={f(x)|x\in{V}}
+Imf=f(V)=\lbrace f(x)|x\in{V}\rbrace
 $$
 と定義される。つまり <strong>線形空間Vの任意の元xの線形写像の集合</strong> である。なお、$Imf$は <strong>V'の部分空間</strong> となる。証明は部分空間の定義より$λf(x_1)+μf(x_2)\in{V'}$を示せばよくそれは$λx_1+μx_2\in{V}$より示せる。</p>
 <p>核(Kerf)は
 $$
-Kerf=f^{-1}(0')={x\in{V}|f(x)=0'}
+Kerf=f^{-1}(0')=\lbrace x\in{V}|f(x)=0'\rbrace
 $$
 となる。$kerf$は$f(λx_1+μx_2)=0'$より$λx_1+μx_2\in{Kerf}$より部分空間である。</p>
 <p>線形写像の一例として、Vを$R^n$、V'を$R^m$とすると
@@ -748,7 +748,7 @@ $$
 <li>Vの任意の元は$\bold{u_1、u_2、\dots 、u_n}$の線形結合で表せる。
 $$
 \bold{u_i\cdot u_j}=
-{ { \begin{aligned}
+{ \lbrace  \begin{aligned}
 1(i=jの時) \cr
 0(i\neq jの時)
 \end{aligned}}
@@ -757,7 +757,7 @@ $$
 </ul>
 <p>を満たすとき、その基底を <strong>正規直交基底</strong> と呼ぶ。ぱっと思いつくのは$\bold{e_1、\cdots e_n}$ だろうが別に正規直交基底の取り方は無限にいっぱいあるので注意。</p>
 <h2 id="%E7%9B%B4%E8%A1%8C%E8%A1%8C%E5%88%97%E7%9B%B4%E8%A1%8C%E5%A4%89%E6%8F%9B">直行行列、直行変換</h2>
-<p>$R^n$の正規直交基底${\bold{u_1、u_2、\cdots 、u_n}}$を列ベクトル成分にもつ行列
+<p>$R^n$の正規直交基底$\lbrace \bold{u_1、u_2、\cdots 、u_n}\rbrace $を列ベクトル成分にもつ行列
 $$
 U=[\bold{u_1、u_2、\cdots 、u_n}]
 $$
@@ -778,7 +778,7 @@ $$
 $$
 が成立する。</p>
 <h2 id="%E3%82%B7%E3%83%A5%E3%83%9F%E3%83%83%E3%83%88%E3%81%AE%E6%AD%A3%E8%A6%8F%E7%9B%B4%E4%BA%A4%E5%8C%96%E6%B3%95">シュミットの正規直交化法</h2>
-<p>計量線形空間$\bold{R^n}$の正規直交でない基底$\bold{{a_1、\cdots 、a_n}}$は正規直交基底$\bold{{u_1、\cdots 、u_m、\cdots 、u_n}}$に変換可能。具体的にはm=1の時は単純に
+<p>計量線形空間$\bold{R^n}$の正規直交でない基底$\bold{\lbrace a_1、\cdots 、a_n\rbrace }$は正規直交基底$\bold{\lbrace u_1、\cdots 、u_m、\cdots 、u_n\rbrace }$に変換可能。具体的にはm=1の時は単純に
 $$
 \bold{u_1=\frac{1}{|a_1|}a_1}
 $$
