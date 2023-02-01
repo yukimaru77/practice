@@ -406,6 +406,10 @@ $$</p>
 <p>$$
 \lbrace x | xの条件 \rbrace
 $$</p>
+<p>このxの条件を <strong>条件C</strong> といい、xにおける条件をC(x)と表記する。つまり</p>
+<p>$$
+\lbrace x | C(x) \rbrace
+$$</p>
 <h2 id="%E7%A9%BA%E9%9B%86%E5%90%88">空集合</h2>
 <p>空集合は集合であって要素ではないので注意。つまり任意の集合Aに対し、
 $$
@@ -452,7 +456,7 @@ $$</p>
 <h3 id="%E5%A7%8B%E9%9B%86%E5%90%88%E7%B5%82%E9%9B%86%E5%90%88">始集合、終集合</h3>
 <p>Aを始集合といい、Bを終集合という。</p>
 <h3 id="%E4%BA%8C%E9%A0%85%E9%96%A2%E4%BF%82">二項関係</h3>
-<p>直積に対し満たすか満たさないかの規則を二項関係という。例えば
+<p>直積に対し満たすか満たさないかの規則を二項関係という(&quot;関係&quot;の説明の部分でもう一度触れるので流してもok)。例えば
 $$
 2x=3y
 $$
@@ -462,7 +466,7 @@ $$
 $$
 G(f) = \lbrace (a,b)|a\in A,b\in f(a)\rbrace
 $$
-定義より同じaに対し(a,b)、(a,b')、(a,b'')などのように無数に存在が許される点にも注意。直積$f:A×B$はすべての(a,b)の組み合わせなのでまあ、これは納得。ただし、&quot;対応&quot;は部分集合を写像先としているので、&quot;線&quot;がグラフなのではなく、閉曲線の面積そのものがグラフになるので注意。</p>
+定義より同じaに対し(a,b)、(a,b')、(a,b'')などのように無数に存在が許される点にも注意。直積$f:A×B$はすべての(a,b)の組み合わせなのでまあ、これは納得。ただし、&quot;対応&quot;は部分集合を対応先としているので、&quot;線&quot;がグラフなのではなく、閉曲線の面積そのものがグラフになるので注意。</p>
 <h3 id="%E5%AE%9A%E7%BE%A9%E5%9F%9F%E5%80%A4%E5%9F%9F">定義域、値域</h3>
 <p>$(a,b)\in Gとなるb\in B$が存在するようなAの元a全体の <strong>集合</strong> をGの <strong>定義域</strong>  という。開区間や閉区間は集合の特別な場合に過ぎない。グラフの定義より$(a,b)\in Gとなるb\in B$が存在するには$f(a)\neq \varnothing$となるのと等しいので
 $$f(a)\neq \varnothingとなるa全体の集合$$
@@ -560,10 +564,75 @@ $$
 <h2 id="%E4%B8%80%E8%88%AC%E3%81%AE%E7%9B%B4%E7%A9%8D">一般の直積</h2>
 <p>一般の直積$\prod _{λ\in Λ} A_λ=A_1×A_2×\cdots ×A_n$は
 $$
-\prod _{λ\in Λ} A_λ = \lbrace a|a:A→\bigcup _ {λ \in Λ} A_λ \quad a:=(\existsλ\in Λ,a(λ):=a_λ\in A_λ)\rbrace
+\prod _{λ\in Λ} A_λ = \lbrace a|a:Λ→\bigcup _ {λ \in Λ} A_λ \quad a:=(\existsλ\in Λ,a(λ):=a_λ\in A_λ)\rbrace
 $$
 と定義される。写像aの集合な事に注意。以下に具体例を添付する。</p>
 <p><img src="https://yukimaru77.github.io/practice/集合論/一般の直積.jpg" alt="画像がなかった時の代替テキスト"></p>
+<h2 id="%E5%A4%9A%E5%A4%89%E6%95%B0%E9%96%A2%E6%95%B0">多変数関数</h2>
+<p>本当はf(x,y,z)ではなく、f((x,y,z))である。算法(演算ともいう)も多変数関数を略した記号である。</p>
+<h2 id="%E9%96%A2%E4%BF%82">関係</h2>
+<p>1変数に対し&quot;条件C&quot;を定義し集合を
+$$
+\lbrace x | C(x) \rbrace
+$$</p>
+<p>と表記したように、n変数の関係を&quot;関係R&quot;と表記する。例えば</p>
+<p>$$
+関係R(x,y,z): x,y,zは実数でx^2+y^2=2zである。
+$$</p>
+<p>みたいな感じ。各変数には、その変数に代入できることのできるもの全体からなる集合 <strong>変域</strong> が定まっている。あくまで代入出来るだけであって、関係Rを満たすかはわからない。よって先ほどの関係R(x,y,z)のx,y,zそれぞれの変域はすべて実数全体である。</p>
+<p>数学において
+$$
+R(x,y) (x,yの変域はともにA)
+$$
+を考えることはとても多いため、通常R(x,y)と書いたらx,yの変域は集合Aとする。またR(x,y)をA上の関係Rと表記することもある。(x,y)が関係Rを満たすときそれを <strong>xRy</strong> と表記し、Rを <strong>二項関係</strong> と呼ぶ。</p>
+<h3 id="%E9%96%A2%E4%BF%82rxy%E3%81%AE%E3%82%B0%E3%83%A9%E3%83%95">関係R(x,y)のグラフ</h3>
+<p>$$
+G(R)= \lbrace (x,y)|x\in A,y\in A,xRy \rbrace
+$$</p>
+<p>個の集合のことを関係R(x,y)のグラフという。これを見れば分かるように関係R(x,y)の定義と対応f:A→Aの定義は数学的に同等である。</p>
+<p>$$
+\begin{aligned}
+&amp;A上のRを定める \cr
+\Longleftrightarrow &amp; A×Aの部分集合Gを定める \cr
+\Longleftrightarrow &amp; 対応f:A→Aを定める。
+\end{aligned}
+$$</p>
+<h2 id="%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82">同値関係</h2>
+<p>相等関係「=」は左辺と右辺が完全に等しい事を表す記号である。しかし、この条件は厳しいものであるので本質的に同じ物を同値関係(相似とか)としたい場合が出てくる。これを定義したのが同値関係である。</p>
+<p>集合Aにおける関係Rが <strong>RはRはAにおける同値関係</strong>_ であるとは</p>
+<p>$$
+\begin{aligned}
+&amp;(1) Aのすべての元aに対してaRa \cr
+&amp;(2) Aの元a,bに対しaRb \Longrightarrow bRa \cr
+&amp;(3) Aの元a,b,cに対しaRb,bRc \Longrightarrow aRc \cr
+\end{aligned}
+$$</p>
+<p>を満たす時を言う。これらをそれぞれ反射律、対称律、推移律という。</p>
+<h2 id="%E5%86%99%E5%83%8Ff%E3%81%AB%E4%BB%98%E9%9A%8F%E3%81%99%E3%82%8B%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82rf">写像fに付随する同値関係R(f)</h2>
+<p>$$
+写像f:A→B
+$$</p>
+<p>に対し二項関係Rを
+$$
+R(x,y): f(x)=f(y)
+$$</p>
+<p>とする。するとこのRはRはAにおける同値関係になる。これを写像fに付随する同値関係R(f)という。</p>
+<h2 id="%E7%9B%B4%E5%92%8C%E5%88%86%E5%89%B2mathfrakm%E3%81%AB%E4%BB%98%E9%9A%8F%E3%81%99%E3%82%8B%E5%90%8C%E5%80%A4%E9%96%A2%E4%BF%82">直和分割$\mathfrak{M}$に付随する同値関係</h2>
+<p>集合Aとその部分集合系($\mathfrak{M}$←ドイツ語のM)について(部分集合系とはAの冪集合の部分集合)$\mathfrak{M}$はAの直和とする。すなわち$\mathfrak{M}$は
+$$
+\begin{aligned}
+&amp;(1)\bigcup \mathfrak{M} =A \cr
+&amp;(2) C,C'\in \mathfrak{M} ; C\neq C'\Longrightarrow C \cap C'=\varnothing<br>
+\end{aligned}
+$$
+を満たすとする。その時の関係Rを
+$$
+a,b\in A、C,C'\in \mathfrak{M}
+$$</p>
+<p>$$
+aRb \Longleftrightarrow a\in C,b\in C',C=C'
+$$</p>
+<p>とするとき、このRを直和分割$\mathfrak{M}$に付随する同値関係という。</p>
 
 </article>
 </body>
