@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>雑学.md</title>
+<title>位相空間論.md</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
 <style>
@@ -392,63 +392,98 @@ padding: 45px;
 </head>
 <body>
   <article class="markdown-body">
-<h1 id="%E3%83%A1%E3%83%A2">メモ</h1>
-<h2 id="%E8%87%AA%E7%84%B6%E6%95%B0%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%8A%A0%E6%B3%95%E3%81%AE%E5%AE%9A%E7%BE%A9">自然数における加法の定義</h2>
-<h3 id="%E8%87%AA%E7%84%B6%E6%95%B0%E3%81%AE%E5%AE%9A%E7%BE%A9">自然数の定義</h3>
-<p>集合N、定数0、関数Sについて</p>
-<ol>
-<li>$0\in N$</li>
-<li>$\forall n\in N$について$S(n)\in N$</li>
-<li>$\forall n\in N$について$S(n)\neq 0$</li>
-<li>$\forall n,m\in N$について$S(n)\neq S(m)$</li>
-<li>Nの部分集合Eについて、$0\in E$かつ$\forall n\in E$について$S(n)\in E$ならば$E=N$</li>
-</ol>
-<p>これら(ペアノの公理と呼ぶ)を満たすとき、<strong>Nの元を自然数と呼び</strong>、$n$に対し$s(n)$を後者と呼ぶ。</p>
-<p>ちなみにS()はsuc()と書かれることもあり、後者 ( successor )の略。自然数を0からにするか1からにするかは<a href="https://ja.wikipedia.org/wiki/%E8%87%AA%E7%84%B6%E6%95%B0">流儀による</a>。最初に発表されたペアノの公理は1派。</p>
-<p>後は記号$1、2、3、\cdots$を
+<h1 id="%E4%BD%8D%E7%9B%B8%E7%A9%BA%E9%96%93%E8%AB%96">位相空間論</h1>
+<h2 id="%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AD%98">前提知識</h2>
+<p>ε-δ論法は既習のものとする。</p>
+<h2 id="%E8%B7%9D%E9%9B%A2%E3%81%AE%E5%85%AC%E7%90%86">距離の公理</h2>
+<p>距離とは何だろうか。&quot;ユークリッド距離&quot;、&quot;マンハッタン距離&quot;、&quot;ハミング距離&quot;など。全部&quot;距離&quot;という名を関している。ここで距離の公理を説明する。集合X上の関数$d$を
 $$
-\begin{aligned}
-&amp;1:=suc(0)  \cr
-&amp;2:=suc(1)\cr
-&amp;3:=suc(2)\cr
-&amp; \qquad \vdots
-\end{aligned}
-$$
-と定義すればいい。</p>
-<h3 id="%E5%85%AC%E7%90%86%E3%81%AE%E8%A7%A3%E9%87%88">公理の解釈</h3>
-<p>公理1は0という記号の存在。0という記号には他の公理を見れば分かるように他の要素とは異なる性質が付随する。</p>
-<p>公理2はどの自然数にも後者(次の要素)の存在。</p>
-<p>公理3は0はいかなる自然数の後者にもならない。</p>
-<p>公理4は異なる自然数には異なる後者が存在。</p>
-<p>公理5は数学的帰納法の原理。部分集合は自然数の中でもある性質を持つ集合を指している。それが公理5を満たすなら自然数全てがはある性質を満たす(つまりE=N)ことになる。</p>
-<p>ちなみに忠実にペアノの公理の最初の発表を訳すと</p>
-<ol>
-<li>1という元をもつNという集合が存在する。</li>
-<li>NからNへの写像fが存在する。</li>
-<li>自然数a,bに対し、f(a)=f(b)ならばa=bである。</li>
-<li>1はf(N)の元ではない。</li>
-<li>Kという類に対し、1∈K, f(K)⊂K ならば N⊂K である。</li>
-</ol>
-<p>になるらしい。</p>
-<h3 id="%E5%8A%A0%E6%B3%95">加法</h3>
-<p>$x,y\in N$に対し、演算+を
-$$
-\begin{aligned}
-&amp;+:N×N →N  \cr
-&amp;x+0:=x\cr
-&amp;x+suc(y):=suc(x+y)\cr
-\end{aligned}
+d:X×X→R
 $$</p>
-<p>と定義する。やったね演算+の定義が出来た。</p>
-<p>1+1=2だけ証明しよう。$1:=suc(0)、2:=suc(1)=suc(suc0))$なので
-$$
-\begin{aligned}
-1+1&amp;=suc(0)+suc(0)  \cr
-&amp;=suc(suc(0)+0)\cr
-&amp;=suc(suc(0)) \cr
-&amp;=2
-\end{aligned}
+<p>とする。ここでdが以下の条件を満たすときdを距離関数という。</p>
+<ol>
+<li>$d(x,y)\geqq 0$（非負性）</li>
+<li>$d(x,y)=0 \Longrightarrow x=y$（同一律）</li>
+<li>$d(x,y)=d(y,x)$（対称律）</li>
+<li>$d(x,z)\geqq d(x,y)+d(y,z)$(三角不等式)</li>
+</ol>
+<p>なお、条件1と2を併せて正定値性と言う場合もある。</p>
+<h2 id="%E3%83%A6%E3%83%BC%E3%82%AF%E3%83%AA%E3%83%83%E3%83%89%E7%A9%BA%E9%96%93%E3%81%A8%E3%83%A6%E3%83%BC%E3%82%AF%E3%83%AA%E3%83%83%E3%83%89%E8%B7%9D%E9%9B%A2">ユークリッド空間とユークリッド距離</h2>
+<p>今後、$R^1=R、R^2=R×R$といった感じでRがn個の直積を$R^n$と表記する。</p>
+<p>$$
+d^n:R^n×R^n→R、d^n(x,y)=\sqrt{(x_1-y_1)^2+\cdots +(x_n-y_n)^2}
 $$</p>
+<p>で定義した距離を導入する。$d^n(x,y)$をユークリッド距離と呼び、集合$R^n$にユークリッド距離を導入した時、$(R^n,d^n)$をユークリッド空間と呼ぶ。</p>
+<h2 id="%E9%96%8B%E7%90%83%E4%BD%93%E7%90%83%E9%9D%A2%E5%86%85%E7%82%B9%E5%A4%96%E7%82%B9%E5%A2%83%E7%95%8C%E9%96%89%E5%8C%85%E3%81%AE%E5%AE%9A%E7%BE%A9">開球体、球面、内点、外点、境界、閉包の定義</h2>
+<p>$R^n$の部分集合$B^n(a,ε)$を
+$$
+B^n(a,ε)=\lbrace x\in R^n|d^n(a,x)&lt;ε\rbrace
+$$
+と定義した時、部分集合$B^n(a,ε)$をaを中心としたεを半径とする <strong>開球体</strong> という。 <strong>ε-近傍</strong> と呼ばれることもある。</p>
+<p>$$
+B^n(a,ε)=\lbrace x\in R^n|d^n(a,x)=ε\rbrace
+$$
+なる集合を点aを中心としたεを半径とする <strong>球面</strong> といい、$S^n(a;ε)$と表す。</p>
+<p>集合Mを$M\subset R^n$とする。点aについて、
+$$
+B^n(a,ε) \subset M
+$$
+なる正の実数εが存在する時、点aをMの <strong>内点</strong> という。$M^n$の内点全体を$M^i$と表す。よって直ちに
+$$
+M^i \subset M
+$$
+なのは言うまでもないだろう。なお、$M^i$は必ずしもMの真部分集合にはならないことに注意。Mの補集合$M^c$の内点をMの <strong>外点</strong> という。言い換えれば、点aについて
+$$
+B^n(a,ε)\cap M =\varnothing
+$$
+なる正の実数εが存在する時、点aをMの外点という。さらに$M^i、M^c$を用いて集合$M^f$を
+$$
+M^f=R^n-(M^i\cup M^c)
+$$
+としたとき、$M^f$をMの <strong>境界</strong> という。つまりaが境界点であるとは、どんな正の実数εに対しても
+$$
+B^n(a,ε)\cap M =\varnothing かつB^n(a,ε)\cap M^c =\varnothing
+$$
+となる。</p>
+<p>点aに対し
+$$
+\forall ε&gt;0、B^n(a,ε)\cap M\neq \varnothing
+$$</p>
+<p>の時、点aをMの <strong>触点</strong> といい、Mの触点全体の集合$M^a(または\bar M)$をMの <strong>閉包</strong> という。つまり定義から明らかに
+$$
+M^a = M^i\cup M^f
+$$
+となる。</p>
+<h2 id="%E9%96%8B%E9%9B%86%E5%90%88%E9%96%89%E9%9B%86%E5%90%88">開集合、閉集合</h2>
+<p>集合Mを$M\subset R^n$とする。$M^i=M$となるならばMを開集合という。</p>
+<p>$M^a=M$となるならばMを閉集合という。</p>
+<h2 id="%E5%8F%8C%E5%AF%BE%E6%80%A7">双対性</h2>
+<p>開集合の補集合は閉集合である。また、閉集合の補集合は開集合である。</p>
+<p>例えば、$R^n=開集合$なので両辺の双対を取って$\varnothing=閉集合$が成り立つ。</p>
+<p>例えば、</p>
+<p>一応だが、集合は開集合または閉集合であると言っているわけではないので注意。</p>
+<h2 id="%E9%96%8B%E9%9B%86%E5%90%88%E7%B3%BB">開集合系</h2>
+<p>開集合全体の集合系を開集合系$\mathfrak{O}$と表記する。</p>
+<p>開集合系では以下の定理が成り立つ。</p>
+<ol>
+<li>$R^n\subset \mathfrak{O},\varnothing \subset \mathfrak{O}$</li>
+<li><strong>有限個</strong> の元$\mathfrak{O}_1,\mathfrak{O}_2,\cdots ,\mathfrak{O}_k$について$\mathfrak{O}_1\cap \mathfrak{O}_2\cap \cdots \cap \mathfrak{O}_k \in \mathfrak{O}$</li>
+<li>$\mathfrak{O}$からなる集合族$(\mathfrak{O}_λ|λ\in Λ)$について$\bigcup _{λ\in Λ}\mathfrak{O}_λ \in \mathfrak{O}$</li>
+</ol>
+<p>2について、有限個としているのは例えば、無限個にすると共通部分が一点のみの集合にすることも可能であり、一点集合はユークリッド空間では閉集合なのが例。</p>
+<h2 id="%E9%96%89%E9%9B%86%E5%90%88%E7%B3%BB">閉集合系</h2>
+<p>閉集合全体の集合系を閉集合系$\mathfrak{A}$と表記する。</p>
+<p>閉集合系では以下の定理が成り立つ。</p>
+<ol>
+<li>$R^n\subset \mathfrak{A},\varnothing \subset \mathfrak{A}$</li>
+<li><strong>有限個</strong> の元$\mathfrak{A}_1,\mathfrak{A}_2,\cdots ,\mathfrak{A}_k$について$\mathfrak{A}_1\cup \mathfrak{A}_2\cup \cdots \cup \mathfrak{A}_k \in \mathfrak{A}$</li>
+<li>$\mathfrak{A}$からなる集合族$(\mathfrak{A}_λ|λ\in Λ)$について$\bigcap _{λ\in Λ}\mathfrak{A}_λ \in \mathfrak{A}$</li>
+</ol>
+<p>なお、閉集合系の定理は開集合系の定理に両辺補集合を取って、必要ならドモルガンの定理(補集合の定理)を適用したものとなる。</p>
+<h2 id="%E8%B7%9D%E9%9B%A2%E7%A9%BA%E9%96%93">距離空間</h2>
+<p>集合Xと距離関数dの対(X,d)、または単にXを距離空間という。例えば先ほどまで議論していたn次元ユークリッド空間$(R^n,d^n)$は距離空間である。ユークリッド空間で定義していた&quot;開球体、球面、内点、外点、境界、閉包、開集合、閉集合&quot;などの定義は一般の距離空間でも同様なので割愛する。</p>
+<p>有名なものにはユークリッド空間のほかにヒルベルト空間などがある。</p>
+<h2 id="%E9%9B%86%E7%A9%8D%E7%82%B9">集積点</h2>
 
 </article>
 </body>
