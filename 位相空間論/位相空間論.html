@@ -225,7 +225,7 @@ pre code {
 }
 
 </style>
-<link rel="stylesheet" href="file:///d%3A/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A6%E3%83%B3/practice/github-markdown.css" type="text/css">
+<link rel="stylesheet" href="file:///c%3A/Users/unive/practice/github-markdown.css" type="text/css">
 <style>
 /* Tomorrow Theme */
 /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
@@ -428,7 +428,7 @@ $$
 $$
 B^n(a,ε) \subset M
 $$
-なる正の実数εが存在する時、点aをMの <strong>内点</strong> という。$M^n$の内点全体を$M^i$と表す。よって直ちに
+なる正の実数εが存在する時、点aをMの <strong>内点</strong> という。$M^n$の内点全体を$M^i$と表し <strong>開核</strong> という。よって直ちに
 $$
 M^i \subset M
 $$
@@ -454,6 +454,7 @@ $$
 M^a = M^i\cup M^f
 $$
 となる。</p>
+<p>例として1次元ユークリッド空間を考え、$M=(0,1)\cup \lbrace 2\rbrace$とする。内点の集合$M^i$は明らかに$M^i=(0,1)$であり、境界点の集合は明らかに$M^f=\lbrace 0\rbrace\cup \lbrace 1\rbrace\cup \lbrace 2\rbrace$となる。よって閉包$\bar M=[0,1]\cup \lbrace 2\rbrace$。</p>
 <h2 id="%E9%96%8B%E9%9B%86%E5%90%88%E9%96%89%E9%9B%86%E5%90%88">開集合、閉集合</h2>
 <p>集合Mを$M\subset R^n$とする。$M^i=M$となるならばMを開集合という。</p>
 <p>$M^a=M$となるならばMを閉集合という。</p>
@@ -484,7 +485,51 @@ $$
 <p>集合Xと距離関数dの対(X,d)、または単にXを距離空間という。例えば先ほどまで議論していたn次元ユークリッド空間$(R^n,d^n)$は距離空間である。ユークリッド空間で定義していた&quot;開球体、球面、内点、外点、境界、閉包、開集合、閉集合&quot;などの定義は一般の距離空間でも同様なので割愛する。</p>
 <p>有名なものにはユークリッド空間のほかにヒルベルト空間などがある。</p>
 <p>https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12242848217</p>
-<h2 id="%E9%9B%86%E7%A9%8D%E7%82%B9">集積点</h2>
+<h2 id="%E9%9B%86%E7%A9%8D%E7%82%B9%E5%B0%8E%E9%9B%86%E5%90%88">集積点、導集合</h2>
+<p>(X,d)を距離空間とし、$A\subset X$とする。点xが集積点であるとは点xが差集合$A\backslash\lbrace x\rbrace$の触点であるときのことをいう。Aの集積点の集まりをAの導集合と言い$A^d$とあらわす。また、集合$A-A^d$の点を孤立点という。閉包$\bar M$と導集合$M^d$には以下の関係が成り立つ。
+$$
+\bar M=M\cup M^d
+$$</p>
+<p>具体例として閉包の時の例と同じように1次元ユークリッド空間を考え、$M=(0,1)\cup \lbrace 2\rbrace$とする。導集合$M^d$は明らかに$M^d=[0,1]$であるので閉包$\bar M$は$\bar M=M\cup M^d=[0,1]\cup \lbrace 2\rbrace$となる。これは内点と境界点から求めた閉包と一致する。</p>
+<h2 id="%E9%9B%86%E5%90%88%E3%81%A8%E3%81%AE%E8%B7%9D%E9%9B%A2%E3%81%A8%E8%AB%B8%E5%AE%9A%E7%90%86">集合との距離と諸定理</h2>
+<p>(X,d)を距離空間とし、点xと集合$A\subset X$との距離を
+$$
+d(x,A)=inf\lbrace d(x,a)|a\in A\rbrace
+$$
+と定義すると以下の定理が成り立つ。</p>
+<p>$$
+\begin{aligned}
+&amp;xがAの触点 \Longleftrightarrow d(x,A)=0\cr
+&amp;xがAの内点\Longleftrightarrow d(x,A^c)&gt;0
+\end{aligned}
+$$
+まあ、inf自体に一種の極限操作のようなものが含まれるのでおなじみの$M=(0,1)\cup \lbrace 2\rbrace$で少し考えれば明らかだと思う。</p>
+<h2 id="%E8%BF%91%E5%82%8D%E7%B3%BB">近傍系</h2>
+<p>(X,d)を距離空間とする。部分集合$U\subset X$が点aの <strong>近傍</strong>　であるとはUの内点にaを含む時のことをいう。点aの近傍すべての集合を点aの近傍系と言い$\mathfrak{R}(a)$とあらわす。よって例えば点aのε-近傍$N(a;ε)$はどんなεをとっても$N(a;ε)\in \mathfrak{R}(a)$である。</p>
+<p>$\mathfrak{R}(a)$について以下の定理が成り立つ。</p>
+<ol>
+<li>$a\in X$ならば$X\in \mathfrak{R}(a)$であり、$U\in \mathfrak{R}(a)$ならば$a\in U$</li>
+<li>$U_1,U_2\in\mathfrak{R}(a)$なら$U_1\cap U_2\in \mathfrak{R}(a)$</li>
+<li>$U\in \mathfrak{R}(a)$かつ$U\subset V$なら$V\in \mathfrak{R}(a)$</li>
+</ol>
+<p>まあ全部当たり前。</p>
+<h2 id="%E9%80%A3%E7%B6%9A%E5%86%99%E5%83%8F">連続写像</h2>
+<p>写像fを
+$$
+f:X_1→X_2
+$$
+とし、$(X_1,d_1),(X_2,d_2)$を距離空間とする。fが$a\in X_1$で連続とは
+$$
+\forall ε&gt;0,\exists δ&gt;0 \quad S.T. \quad d_1(x,a)&lt;δ \Longrightarrow d_2(f(x),f(a))&lt;ε
+$$</p>
+<p>となることである。$X_1$全体で連続ならそれを連続写像という。要は普通のイプシロン-デルタ論法の絶対値だったところが距離関数に代わっているだけ。</p>
+<p>さて、これではいつもと変わり映えないためもう少し位相空間論ぽく定義してみよう。fが$a\in X_1$で連続とは
+$$
+\forall ε&gt;0,\exists δ&gt;0 \quad S.T. \quad f(B_{X_1}(a,δ)) \subset B_{X_2}(f(a),ε)
+$$
+とする。ただし、$B_{X_1}(a,δ)$は$X_1$の開球体(または点aのδ-近傍)である。ここで$X_1\subset R^n,X_2\subset R^m$として具体例を図に示す。この図を使って先ほどの定義を日本語で説明すると、どんな中心f(a)半径εの球を持ってきてもそこに写像がすっぽり収まるような中心a半径δの球が存在する。という意味になる。</p>
+<p><img src="https://yukimaru77.github.io/practice/位相空間論/連続写像.jpg" alt="画像がなかった時の代替テキスト"></p>
+<h2 id="%E3%81%93%E3%81%93%E3%81%8B%E3%82%89%E3%81%AE%E6%B5%81%E3%82%8C">ここからの流れ</h2>
 
 </article>
 </body>
