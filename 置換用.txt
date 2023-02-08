@@ -1,0 +1,3 @@
+1. $R^n\subset \mathfrak{A},\varnothing \subset \mathfrak{A}$
+2.  __有限個__ の元$\mathfrak{A}_1,\mathfrak{A}_2,\cdots ,\mathfrak{A}_k$について$\mathfrak{A}_1\cap \mathfrak{A}_2\cap \cdots \cap \mathfrak{A}_k \in \mathfrak{A}$
+3. $\mathfrak{A}$からなる集合族$(\mathfrak{A}_λ|λ\in Λ)$について$\bigcup _{λ\in Λ}\mathfrak{A}_λ \in \mathfrak{A}$
