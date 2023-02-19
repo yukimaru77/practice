@@ -529,9 +529,13 @@ $$
 <h2 id="%E5%8F%AF%E6%B8%AC%E9%96%A2%E6%95%B0">可測関数</h2>
 <p>$(R,\mathfrak{M})$の可測空間において、$X\in\mathfrak{M}$上の関数$f:X→\bar R$が <strong>可測関数</strong> であるとは、任意の$a\in R$に対して
 $$
-\lbrace x\in X| f(x)&gt;a\rbrace
+\lbrace x\in X| f(x)&gt;a\rbrace \in\mathfrak{M}
 $$
-が可測集合であることを言う。</p>
+であることを言う。必要十分条件として任意のボレル集合$B$の逆像が$\mathfrak{M}$に含まれると言ってもいい。式にすると
+$$
+f^{-1}(B)=\lbrace x\in R| f(x)\in B\rbrace \in\mathfrak{M}
+$$</p>
+<p>となる。</p>
 <p>また、$f:X→\bar R$を拡張して$f':R→\bar R,f'(x)=f(x)(x\in X),f'(x)=0(x\in X^c)$とすればリーマン積分の場合を考えれば分かるように、積分の値に影響しない。よって <strong>関数の定義域はRに限定しても一般性を失わない。</strong></p>
 <p>ちなみに
 $$
