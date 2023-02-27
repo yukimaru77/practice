@@ -393,14 +393,164 @@ padding: 45px;
 <body>
   <article class="markdown-body">
 <h1 id="%E6%B8%AC%E5%BA%A6%E8%AB%96%E7%9A%84%E7%A2%BA%E7%8E%87%E8%AB%96">測度論的確率論</h1>
-<h2 id="%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AD%98">前提知識</h2>
+<h2 id="%E5%88%9D%E9%A0%AD%E7%9A%84%E3%81%AA%E8%A9%B1%E5%8F%A4%E5%85%B8%E7%9A%84%E7%A2%BA%E7%8E%87%E8%AB%96">初頭的な話(古典的確率論)</h2>
+<p>初頭的な話は高校の時にやっているので省略。忘れていたら(そのままでも構わないが)マセマの確率統計第1章などに書いてある。</p>
+<h2 id="%E3%81%93%E3%81%93%E3%81%8B%E3%82%89%E3%81%AE%E8%A9%B1%E3%81%AE%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AD%98">ここからの話の前提知識</h2>
 <p>初歩的な集合論や位相空間論、測度論、ルベーグ積分などは既習とする。</p>
-<h2 id="%E6%A8%99%E6%9C%AC%E4%BA%8B%E8%B1%A1%E7%A2%BA%E7%8E%87%E3%81%AE%E5%AE%9A%E7%BE%A9">標本、事象、確率の定義</h2>
-<p>$(Ω,F,P)$なる測度空間を考える。ここでさらに$P(Ω)=1$の時、$(Ω,F,P)$を <strong>確率空間</strong> と呼び、Pを <strong>確率</strong> 、$F$の元を <strong>事象</strong> 、$Ω$の元を <strong>標本</strong> と呼ぶ。</p>
+<h2 id="%E6%A8%99%E6%9C%AC%E7%82%B9%E4%BA%8B%E8%B1%A1%E7%A2%BA%E7%8E%87%E3%81%AE%E5%AE%9A%E7%BE%A9">標本点、事象、確率の定義</h2>
+<p>$(Ω,F,P)$なる測度空間を考える。ここでさらに$P(Ω)=1$の時、$(Ω,F,P)$を <strong>確率空間</strong> と呼び、Pを <strong>確率(測度)</strong> 、$F$の元を <strong>事象</strong> 、$Ω$の元を <strong>標本点</strong> と呼ぶ。また、$P(A)$を <strong>事象Aの確率と呼ぶ。</strong></p>
+<p>また、写像$P:F→R$を <strong>確率法則</strong> とも呼ばれる。</p>
 <h2 id="%E7%A2%BA%E7%8E%87%E5%A4%89%E6%95%B0">確率変数</h2>
-<p>$(Ω,F,P)$なる確率空間と$(R,M)$なる可測空間を考える。さらに写像$X:Ω→R$を考えこれが可測関数ならば、$X$を <strong>確率変数</strong> という。</p>
-<h3 id="%E5%8F%AF%E6%B8%AC%E9%96%A2%E6%95%B0">可測関数</h3>
-<p><a href="https://yukimaru77.github.io/practice/%E6%B8%AC%E5%BA%A6%E8%AB%96%E3%81%A8%E3%83%AB%E3%83%99%E3%83%BC%E3%82%B0%E7%A9%8D%E5%88%86/%E6%B8%AC%E5%BA%A6%E8%AB%96%E3%81%A8%E3%83%AB%E3%83%99%E3%83%BC%E3%82%B0%E7%A9%8D%E5%88%86.html#%E5%8F%AF%E6%B8%AC%E9%96%A2%E6%95%B0">こちらを参照</a>。$X$が単関数なら<a href="https://yukimaru77.github.io/practice/%E6%B8%AC%E5%BA%A6%E8%AB%96%E3%81%A8%E3%83%AB%E3%83%99%E3%83%BC%E3%82%B0%E7%A9%8D%E5%88%86/%E6%B8%AC%E5%BA%A6%E8%AB%96%E3%81%A8%E3%83%AB%E3%83%99%E3%83%BC%E3%82%B0%E7%A9%8D%E5%88%86.html#%E5%8F%AF%E6%B8%AC%E9%96%A2%E6%95%B0">こうとも書ける</a></p>
+<p>$(Ω,F,P)$なる確率空間と$(R^n,B(R^n))$なる測度空間を考える。さらに写像$X:Ω→R$を考えこれがF-可測関数ならば、$X$を <strong>(d次元)確率変数</strong> という。n=1の場合特に <strong>実確率変数</strong> という。F-可測関数とは数式にすると(n=1の場合、)</p>
+<ol>
+<li>fが可測関数である。つまり、任意の$B\in B(R)$の逆像$f^{-1}(B)$が$f^{-1}(B)\in F$</li>
+<li>任意の区間$I$の逆像$f^{-1}(I)$が$f^{-1}(I)\in F$</li>
+<li>任意の$a\in R$に対し、$\lbrace x\in X| f(x)&gt;a\rbrace \in F$。つまり$f^{-1}((a,∞))\in F$</li>
+<li>任意の$a\in R$に対し、$\lbrace x\in X| f(x)\geqq a\rbrace \in F$。つまり$f^{-1}([a,∞))\in F$</li>
+<li>任意の$a\in R$に対し、$\lbrace x\in X| f(x)&lt;a\rbrace \in F$。つまり$f^{-1}((-∞,a))\in F$</li>
+<li>任意の$a\in R$に対し、$\lbrace x\in X| f(x)\leqq a\rbrace \in F$。つまり$f^{-1}((-∞,a])\in F$</li>
+</ol>
+<h2 id="%E7%A2%BA%E7%8E%87%E3%81%AE%E8%A1%A8%E8%A8%98%E6%96%B9%E6%B3%95">確率の表記方法</h2>
+<p>確率変数を用いたよく使われる確率の表記方法を紹介する。$(Ω,F,P)$なる確率空間と確率変数Xを考える。</p>
+<p>$$
+\begin{aligned}
+&amp;P(X=x_i):=P(X^{-1}(x_i))\cr
+&amp;P(X\in A):=P(\lbrace X^{-1}(a)|\forall a\in A\rbrace)\cr
+&amp;\qquad\qquad\quad=P(X^{-1}(A))
+\end{aligned}
+$$</p>
+<h2 id="%E7%A2%BA%E7%8E%87%E5%A4%89%E6%95%B0%E3%81%8B%E3%82%89%E7%94%9F%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B%CF%83%E5%8A%A0%E6%B3%95%E6%97%8F">確率変数から生成されるσ加法族</h2>
+<p>$(Ω,F,P)$なる確率空間と$(R^d ,B(R^d))$なる測度空間を考える。まず、確率変数$X:Ω→R^d$は可測関数の条件より任意の$B\in B(R^d)$に対し
+$$
+X^{-1}(B)=\lbrace x\in Ω| f(x)\in B^d\rbrace \in F
+$$
+の性質を満たす。よって逆に確率変数$X$が与えられたとき
+$$
+σ(X):=\lbrace X^{-1}(B)| B \in B(R^d)\rbrace
+$$
+と定義すると$σ(X)$はσ加法族になる。証明は逆像の性質とσ加法族の性質を用いれば簡単にできる。よって <strong>確率変数Xで記述される事象は$σ(X)$で最小である。</strong></p>
+<h2 id="%22%E5%88%9D%E9%A0%AD%E7%9A%84%22%E3%81%AA%E6%9D%A1%E4%BB%B6%E4%BB%98%E7%A2%BA%E7%8E%87">&quot;初頭的&quot;な条件付確率</h2>
+<p>$(Ω,F,P)$なる確率空間に対し、ある事象Bを条件づけたときの、事象Aの <strong>条件付き確率</strong> $P(A|B)$は
+$$
+P(A|B)=\frac{P(A\cap B)}{P(B)}
+$$
+と定義される。ただし、$P(B)&gt;0$</p>
+<p>$P(A|B)$の直感的な意味は、事象Bが起きるものとした時の事象Aが起こる確率となる。</p>
+<p>また、実際に計算すると、$(Ω,F,P)$における条件付き確率$P(\cdot|B)$は確率測度となっているため$(Ω,F,P(\cdot|B))$の期待値も当然同じ式で求めることが出来る。</p>
+<h2 id="%E3%83%99%E3%82%A4%E3%82%BA%E3%81%AE%E5%AE%9A%E7%90%86%E3%81%A8%E7%8B%AC%E7%AB%8B">ベイズの定理と独立</h2>
+<p>条件付き確率の定義より以下の定理が成り立つ。
+$$
+P(B|A)=\frac{P(A|B)}{P(A)}P(B)
+$$</p>
+<p>この定理は以下の意味で重要である。</p>
+<ul>
+<li>P(B)は事象Aが起きる前の事象Bの確率(事前確率)</li>
+<li>P(B|A)は事象Aが起きた後での事象Bの確率(事後確率)</li>
+</ul>
+<p>と見ることが出来る。また、$Ω$の直和分割$B_1,\cdots B_n\in F$とすると$P(A)=\sum_{i=1}^nP(B_i)P(A|B_i)$なので
+$$
+P(B_j|A)=\frac{P(B_j)P(A|B_j)}{P(A)}=\frac{P(B_j)P(A|B_j)}{\sum_{i=1}^nP(B_i)P(A|B_i)}
+$$</p>
+<p>また、以下の式が成り立つ時、事象AとBは独立であるという。(P(B)&gt;0とすると)</p>
+<p>$$
+P(A|B)=P(A)	\Leftrightarrow P(A\cap B)=P(A)P(B)
+$$</p>
+<p>が成り立つ時である。これは事象Bが起きたのを知っても事象Aの確率(事後確率)が変化しないという=事象Aと事象Bは独立している意味になる。</p>
+<h2 id="%E7%A2%BA%E7%8E%87%E5%88%86%E5%B8%83%E3%81%BE%E3%81%9F%E3%81%AF%E5%8D%98%E3%81%AB%E5%88%86%E5%B8%83">確率分布(または単に分布)</h2>
+<p>$(Ω,F,P)$なる確率空間と$(R^d,B(R^d))$なる測度空間を考える。さらに(d次元)確率変数$X=(X_1,X_2,\cdots,X_d)$が定義されているとする。</p>
+<p>ここで測度$P^X$を以下のように構成する。
+$$
+P^X:B(R^d)→[0,1] \quad P^X(B)=P(X\in B)=P(X^{-1}(B))
+$$</p>
+<p>とする。するとこれは測度の条件を満たすため測度となりさらに確率測度となる。この$P^X$は <strong>Xの確率分布</strong> 、または単に <strong>Xの分布</strong> という。なお、測度論の言葉を使うなら(自分の測度論のサイトには載せてないが)像測度という言葉に対応する。</p>
+<p>これによって$(Ω,F,P)$なる確率空間から確率変数$X:Ω→R^n$を用いて、$(R^d,B(R^d),P^X)$なる確率空間を定義できた。</p>
+<h2 id="%E5%88%86%E5%B8%83%E9%96%A2%E6%95%B0%E5%90%8C%E6%99%82%E5%88%86%E5%B8%83%E9%96%A2%E6%95%B0%E5%91%A8%E8%BE%BA%E5%88%86%E5%B8%83%E9%96%A2%E6%95%B0">分布関数、同時分布関数、周辺分布関数</h2>
+<p>$(Ω,F,P)$なる確率空間と$(R^d,B(R^d),P^X)$なる確率空間を考える。さらに(d次元)確率変数$X=(X_1,X_2,\cdots,X_d)$が定義されているとする。</p>
+<p>ここで$x\in R^d$に対し、$F:R^d→[0,1]$を
+$$
+\begin{aligned}
+F(x):&amp;=P^X((-∞,x_1]×\cdots ×(-∞,x_d])\cr
+&amp;=P^X(\lbrace X\in R^n|X_1\leqq x_1,\cdots,X_n\leqq x_n\rbrace)
+\end{aligned}
+$$
+とおく。この$F(x)$を <strong>Xの分布関数</strong> という。特に$d\geqq2$の時の$F(x)$を <strong>Xの同時分布関数</strong> という。</p>
+<p>また、$X_i$に対する分布関数を <strong>X_iの分布関数</strong> という。</p>
+<h2 id="%E5%88%86%E5%B8%83%E9%96%A2%E6%95%B0%E3%81%AE%E6%80%A7%E8%B3%AA">分布関数の性質</h2>
+<ol>
+<li>Fは単調非減少関数</li>
+<li>$F(∞)=1$かつ$F(-∞)=0$</li>
+<li>$F(x)$は右連続関数</li>
+<li>$P(a&lt;X\leqq b)=F(b)-F(a)$、$P(a\leqq X\leqq b)=F(b)-F(a_-)$。ただし、$F(a_-)=lim_{x→-0+a}F(x)$</li>
+<li>$F$の不連続点はたかだか可算個</li>
+</ol>
+<p>要はルベーグ-スティルチェス測度を$P$とした時の$F$かな？(裏が取れたら追記)</p>
+<h2 id="%E9%9B%A2%E6%95%A3%E5%9E%8B%E9%80%A3%E7%B6%9A%E5%9E%8B%E5%AF%86%E5%BA%A6%E9%96%A2%E6%95%B0">離散型、連続型、密度関数</h2>
+<p>$1_A(x)=1\quad(x\in A),0\quad(OtherWise)$なる関数を <strong>定義関数</strong> という。また、定義より直ちに$1_{\varnothing}(x)=0$となることも念頭に置こう。</p>
+<p>$p(a):=P(X=a)$なる関数$p:A→[0,1]$を <strong>確率関数</strong> と呼ぶ。</p>
+<p>d次元ベクトル$x,y$が$x\leqq y$とは各$x_i,y_i$に対し、$x_i\leqq y_i$が成り立つとする。</p>
+<p>たかだか可算な集合$A\subset R^d$に対し、$P(X\in A)=1$が成り立つとき、 <strong>Xは離散型</strong> という。つまり高々可算個の1点集合の(逆像の)確率の和が1になるということである。数式にすると$\sum_{a\in A}p(a)=1$のAが高々可算可算であると言っている。また、 <strong>分布関数の取る値が高々可算個</strong> と言ってもいい。この時分布関数は以下のように書ける。
+$$
+F(x)=\sum_{i:a_i\leqq x}P(X=a_i)=\sum_{i=1}^∞P(X=a_i)1_{\lbrace b|a_i\leqq b\leqq x\rbrace}(x)
+$$
+ここで$1_{\lbrace b|a_i\leqq b\leqq x\rbrace}(x)$は$x\leqq a_i$ならば$1_{\varnothing}(x)$となるため常に0となり左辺と等しいのは分かるだろう。</p>
+<p>また、分布関数$F$が連続の時 <strong>Xは連続型</strong> という。特に$x\in R^d$に対し非負関数$f(x)$、ただし$\int_{R^d}f(x)dx=1$とする。これを用いて
+$$
+F(x)=\int_{(-∞,x_1]×\cdots ×(-∞,x_d]}f(z)dz=\int_{R^d}f(z)1_{\lbrace z\leqq x\rbrace}dz
+$$
+と書けるとき、 <strong>Fは絶対連続型</strong> といい、 <strong>fを(確率変数Xの分布関数Fの)確率密度関数</strong> または単に <strong>Xの密度関数</strong> という。</p>
+<h2 id="%E6%9C%9F%E5%BE%85%E5%80%A4">期待値</h2>
+<p>$(Ω,F,P)$なる確率空間と$X:Ω→R$なる確率変数を考える。確率変数$X$が$P-$可積分である時
+$$
+E[X]:=\int_ΩX(w)P(dw)
+$$
+と書いて、$E[X]$を$X$の期待値という。$X$が$P-$可積分出ない時には期待値を持たないという。なお、$B\in F$なる$B$に積分範囲を制限した期待値を
+$$
+E[X;B]=E[1_BX]=\int_Ω1_B(w)X(w)P(dw)
+$$
+と書く。$1_B$とは$B$の元に対してだけ1、それ以外は0を取る関数である。</p>
+<h2 id="%E5%88%9D%E9%A0%AD%E7%9A%84%E3%81%AA%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E6%9C%9F%E5%BE%85%E5%80%A4">初頭的な条件付き期待値</h2>
+<p>$(Ω,F,P)$なる確率空間に対し、条件付き確率$P(\cdot|B)$を定義した時それの期待値を$E[X|B]$と表し、 <strong>確率変数XによるBに関する条件つき期待値</strong> という。</p>
+<h2 id="%E4%BE%8B%E9%A1%8C1">例題1</h2>
+<p>サイコロを1回投げることを考える。
+$$
+Ω=\lbrace iの目が出る|i=1,2,3,4,5,6\rbrace
+$$
+ここで集合$A_i$を
+$$
+A_i=\lbrace iの目が出る\rbrace \quad (\subset Ω=\lbrace 1の目が出る,\cdots.6の目が出る\rbrace)
+$$
+と置き、$F=2^Ω$とする。さらに測度$P$を
+$$
+P(A_i)=\frac{1}{6}
+$$
+とおく。以上より確率空間$(Ω,F,P)$が定まった。さらに確率変数$X:Ω→\lbrace 1,2,3,4,5,6\rbrace$を以下のように定める。
+$$
+X^{-1}(\lbrace i\rbrace)=A_i \quad(\in F)
+$$
+これは以下と同値である。
+$$
+X(iの目が出る)=i
+$$</p>
+<p>ここで「偶数の目が出る」という事象$B=A_2\cup A_4\cup A_6$を考える。すると条件付き確率$P(\cdot|B)$は
+$$
+P(A_i|B)=0(i\in\lbrace 1,3,5\rbrace の時),\frac{1}{3}(i\in\lbrace 2,4,6\rbrace の時)
+$$
+となる。よって期待値$E[X]、E[X|B]$は
+$$
+\begin{aligned}
+E[X]&amp;=\sum_{i=1}^6X(A_i)P(A_i)\cr
+&amp;=1\cdot\frac{1}{6}+2\cdot\frac{1}{6}+\cdots+6\cdot\frac{1}{6}\cr
+&amp;=\frac{7}{2}
+\end{aligned}
+$$</p>
+<p>$$
+\begin{aligned}
+E[X|B]&amp;=\sum_{i=1}^6X(A_i)P(A_i|B)\cr
+&amp;=1\cdot0+2\cdot\frac{1}{3}+\cdots+5\cdot0+6\cdot\frac{1}{3}\cr
+&amp;=4
+\end{aligned}
+$$</p>
+<h2 id="%E6%9C%9F%E5%BE%85%E5%80%A4%E3%81%AB%E3%82%88%E3%82%8B%E7%A2%BA%E7%8E%87%E5%A4%89%E6%95%B0%E3%81%AE%E7%94%9F%E6%88%90">期待値による確率変数の生成</h2>
 
 </article>
 </body>
