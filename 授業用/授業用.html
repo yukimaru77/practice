@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>授業用.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+<link rel="stylesheet" href="file:///d%3A/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A6%E3%83%B3/practice/github-markdown.css" type="text/css">
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://yukimaru77.github.io/practice/github-markdown.css">
+<style>
+.markdown-body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+}
+
+@media (max-width: 767px) {
+.markdown-body {
+  padding: 15px;
+}
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ]
+    });
+  });
+  elements = document.getElementsByTagName("h2");
+  console.log(elements)
+
+</script>
+</head>
+<body>
+  <article class="markdown-body">
+<h1 id="ai%E7%B4%B9%E4%BB%8B">AI紹介</h1>
+<p>こんにちは。私は理工学部電気電子工学科の4年生です。本日は教授からの要望で授業でAIの紹介をすることになりました。
+AI分野は急速に発展しており、常に出力の精度を上げています。未来では必要なスキルになる可能性が高いです。
+毎日のように新しいAIが発表されている昨今ですが、特に有名なものを紹介します。興味を持って使うようになってくれたらうれしいです。</p>
+<h2 id="%E5%A4%9A%E7%A8%AE%E5%A4%9A%E6%A7%98%E3%81%AEai%E3%81%9F%E3%81%A1">多種多様のAIたち</h2>
+<p>AIとは、日本語訳すると人工知能であり、さらにこれは以下の二つに細分化されます。</p>
+<ul>
+<li>汎用人工知能(強い人工知能)</li>
+<li>特化型人工知能</li>
+</ul>
+<p>強い人工知能とは人間のように学習し、人間が可能なあらゆる知的作業を理解・学習・実行出来る人工知能のことを指します。現在これは実現しておらず、全て特化型人工知能に分類されます。</p>
+<p>特化型人工知能とはその名の通り、特定のタスクにおいてのみ効果を発揮する人工知能の事を言います。ルンバやChat GPTなどがその一例です。特定のタスクでしか効果が発揮できない性質上、タスクの数だけ人工知能があります。</p>
+<p><img src="https://yukimaru77.github.io/practice/授業用/AI.jpg" alt="画像がなかった時の代替テキスト"></p>
+<h2 id="ai%E3%81%AE%E7%B4%B9%E4%BB%8B">AIの紹介</h2>
+<p>現在、AI分野は急速に発展しており、少し先の未来では必要なスキルになる可能性が高いです。</p>
+<p>ここでは、ユーザーが簡単にかつすぐに使うことが出来る有名なAIをいくつか紹介しようと思います。</p>
+<ol>
+<li><strong>ChatGPT</strong> や <strong>mebo</strong> の会話系AI</li>
+</ol>
+<p>テキストを送信すると返答してくれるAI。ChatGPTがアクティブユーザー数1億人に到達するのにかかった時間はわずか2か月とものすごい数字。インスタですら1億人になるには2年半かかっている。</p>
+<ol start="3">
+<li><strong>VOICEBOX</strong> などの音声生成系AI</li>
+</ol>
+<p>テキストを送信すると、人が喋っているような音声を生成してくれるAI。</p>
+<ol start="4">
+<li><strong>Stable Diffusion</strong> や <strong>NovelAI</strong> の画像生成系AI</li>
+</ol>
+<p>テキストを送信すると、画像を生成してくれるAI。</p>
+<ol start="5">
+<li><strong>Github Copilot</strong> などのプログラミング補助AI</li>
+</ol>
+<p>コーディング(コードを書くという意味)をしている際、ユーザーが書きたい内容を予測して出力してくれるAI。</p>
+<ol start="6">
+<li><strong>Bing AI</strong> や <strong>Bard</strong> などの検索補助AI</li>
+</ol>
+<p>検索を従来のキーワード型ではなく、会話形式でできるようなAI。</p>
+<p>他にも本当に数えきれないほどのAIが存在しますが(簡単に実演できる物の中で)世界に大きな震撼を与えたであろう超重鎮なAIを上げただけでもこんなにたくさんあります。大抵ここ2年で発表されたものばかりです。</p>
+<h2 id="%E3%81%AA%E3%81%9C%E4%BB%8A%E3%81%8B%E3%82%89ai%E4%BD%BF%E3%81%86%E3%81%AE%E3%81%8B">なぜ今からAI使うのか</h2>
+<p>先ほど紹介した用に現在では手軽に試せるタイプのAIである、text2〇〇のAI(textから〇〇を生成するAIのこと)が多く存在しており <strong>簡単に使うことは出来ます</strong> 。しかし、簡単に使えるtext2〇〇のAIに絞ってもそれですら、欲しい答えを導くには <strong>非常に高度なスキルが必要です</strong> 。プロンプトで文字を書いてお願いするだけじゃんと思うかもしれませんが、要件を正確に記述する能力や嘘を見抜く能力など様々なスキルが必要になってきます。もはやAIは魔法と認識されており、元素法典と呼ばれるAIに上手い絵を描かせるための呪文などをまとめたものすら存在する始末です。これらはプロンプトエンジニアリングという一つの分野をなすほど日々研究されています。</p>
+<h2 id="ai%E3%82%92%E3%82%88%E3%82%8A%E6%B4%BB%E3%81%8B%E3%81%99%E4%BD%BF%E3%81%84%E6%96%B9">AIをより活かす使い方</h2>
+<p>AIは単体で使っても強力なツールですが、組み合わせるとより面白い使い方が出来餡巣。例えば、meboとVOICEBOXを組み合わせることでAI Vtuver(中身がAIのYotuber)なども既に存在しています。AI×AIのみではなく、AI×プラグインといった使い方も強力で例えばChat GPT×NotionなどでChat GPTからもらった内容をマークダウン形式で保存して置けるなどの便利な使い方もあります。もちろん組み合わせるとなるとさらに使用難易度が上がるとは思いますので取り敢えず単体で慣れてみましょう。</p>
+<h2 id="%E5%AE%9F%E8%B7%B5%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86">実践してみよう</h2>
+<ol>
+<li>Github Copilot</li>
+</ol>
+<p>学生は無料で使えます。リンクは<a href="https://qiita.com/SNQ-2001/items/796dc5e794ac3f57a945">こちら</a></p>
+<ol start="2">
+<li>Chat GPT</li>
+</ol>
+<p>リンクは<a href="https://openai.com/blog/chatgpt">こちら</a></p>
+<ol start="3">
+<li>Novel AI</li>
+</ol>
+<p>リンクは<a href="https://novelai.net/login">こちら</a>で呪文集は<a href="https://baskmedia.jp/novelai-code-of-the-elements1/">お馴染みの元素法典</a>。なお、NovelAIは2022年10月6日に生成モデルが流出したことで有名。Torrentで共有されていますが、使ったことがない場合は危険性が高いので変なことはあまり考えないほうがいいかも。</p>
+<p>無料で出来るAIとしては[こちら](Stable Diffusion)が有名。呪文集は<a href="https://civitai.com/">こちら</a></p>
+<ol>
+<li>bing AI</li>
+</ol>
+<p>リンクは<a href="https://www.bing.com/new">こちら</a>。ただしwait listへの参加が必要で	2022年12月1日にwait listが公開された。自分はかなり初期に参加したので使えるが今、参加してももう使えないかも？</p>
+<ol start="5">
+<li>Tome</li>
+</ol>
+<p>これはテキストからプレゼンを自動で作ってくれるツールです。ちなみに<a href="https://tome.app/invite/yukimidaifuku715gmailcom-clfxpkfnq3heg429k1z6md0ie">このリンク</a>から登録すると、自分にも(あなたにも)少しクレジット(AIの回数券)が入るのでもしやるならここからしてくれると喜びます。。。</p>
+
+</article>
+</body>
+<script>
+	elements = document.getElementsByTagName("h2");
+	table_of_contents = document.createElement("ul");
+	h2=document.createElement("h2");
+	h2.textContent="目次"
+	table_of_contents.appendChild(h2)
+	for (  var i = 0;  i < elements.length;  i++  ) {
+		console.log(elements[ i ]);
+		const newElement_li = document.createElement("li");
+		const newElement_a = document.createElement("a");
+		newElement_a.href="#"+elements[ i ].id;
+		newElement_a.textContent = elements[ i ].textContent;
+		newElement_li.appendChild(newElement_a);
+		table_of_contents.appendChild(newElement_li);
+		
+	}
+	parents=document.getElementsByClassName("markdown-body")[0];
+	h1 = document.getElementsByTagName("h1")[0];
+	parents.insertBefore(table_of_contents, h1.nextSibling)
+</script>
+</html>
