@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>4_22~25.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+<link rel="stylesheet" href="file:///d%3A/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A6%E3%83%B3/practice/github-markdown.css" type="text/css">
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://yukimaru77.github.io/practice/github-markdown.css">
+<style>
+.markdown-body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+}
+
+@media (max-width: 767px) {
+.markdown-body {
+  padding: 15px;
+}
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ]
+    });
+  });
+  elements = document.getElementsByTagName("h2");
+  console.log(elements)
+
+</script>
+</head>
+<body>
+  <article class="markdown-body">
+<h1 id="%E9%80%B2%E6%8D%97%E5%A0%B1%E5%91%8A%E7%94%A8%E8%B3%87%E6%96%9942225">進捗報告用資料(4/22~25)</h1>
+<h2 id="%E6%9D%B1%E5%A4%A7%E3%81%AB%E8%A1%8C%E3%81%A3%E3%81%9F%E6%84%9F%E6%83%B3422">東大に行った感想(4/22)</h2>
+<ul>
+<li>とりあえず自分の勉強の方向性は少しずれていた。</li>
+<li>基礎がすべてだと思いこみ、確率論などの問題集を解いたり、統計をやってみたり、 <strong>ディープラーニング以前の手法</strong> について色々やっていた。</li>
+<li>これは、 <strong>遠回りすぎる(私の要領的に無理)。</strong> 余裕が出来てきたら、戻ってくる。</li>
+<li>とりあえず、色んな <strong>ディープラーニング</strong> の手法を学ぶ。</li>
+</ul>
+<h2 id="%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A842225">やったこと(4/22~25)</h2>
+<p>以上を加味してやったこと。</p>
+<ol>
+<li>とりあえず基礎に戻ってDenseレイヤー(全結合層)</li>
+<li>CNN</li>
+<li>RNN</li>
+<li>GRU</li>
+<li>LSTM</li>
+<li>bi-LSTM</li>
+<li>SE-block(Attentionぽいもの)</li>
+<li>RNNLM</li>
+<li>word2vec</li>
+<li>doc2vec</li>
+<li>Attention(初代)</li>
+<li>今後の予定(Attentionのより一般的な機構)</li>
+</ol>
+<p>以下順を追って概要だけまとめていく。(画像を無断で拾ってきているため、(する価値も無いと思いますが)外部には公開しないでください。)</p>
+<h2 id="dense%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E5%85%A8%E7%B5%90%E5%90%88%E5%B1%A4%E3%82%84fc%E5%B1%A4%E3%81%A8%E5%91%BC%E3%81%B0%E3%82%8C%E3%82%8B%E3%81%93%E3%81%A8%E3%82%82">Denseレイヤー(全結合層やfc層と呼ばれることも)</h2>
+<p><img src="./全結合.jpg" alt=""></p>
+<p>入力と出力がすべてつながっている層のこと。入力ベクトル$I$を$i$次元、出力ベクトル$O$を$o$次元とすると</p>
+<p>$$
+O = W_{i2o}I
+$$</p>
+<p>となるためパラメータ数は$i×o$個数となる。つまり線形写像のこと。ただし、一般には定数項も含めて線形とか言ったりする(正確にはアフィン写像)。つまり</p>
+<p>$$
+O = W_{io}I + b
+$$</p>
+<p>ということになる。</p>
+<p>$concat$なる演算を以下のように定義する。</p>
+<p>$$
+concat(X,Y)=(x_1,x_2,\cdots,x_n,y_1,y_2,\cdots,y_m)^T
+$$
+要はつなげるだけである。python的にいうなら<code>X.extend(Y)</code>である。すると先ほどのアフィン写像は
+$$
+O = W_{io}I + b = W_{i+1o}concat(X,1)
+$$
+となる。</p>
+<h2 id="cnn">CNN</h2>
+<p><img src="./cnn.jpg" alt=""></p>
+<p>CNNは畳み込み層とプーリング層を持つニューラルネットワークのこと。畳み込み層(Conv層)は特徴量の自動抽出(特徴マップの作成)、プーリング層(Pooling層)は次元圧縮をしている。</p>
+<p>畳み込み層は画像処理で言うところフィルタ処理にあたる。</p>
+<p><img src="./カーネル.png" alt=""></p>
+<p>画像のように、カーネルと入力画像で内積を取りその大きさを特徴マップとして出力する。内積を取るということは、カーネルとのパターンが同じような部分は値が大きくなり、そうでない部分は値が小さくなるため特徴抽出として機能する。これに関しては、実際にやってみるのが早い。pythonなどで、ガウシアンフィルタや平滑化フィルタ、x軸フィルタやy軸フィルタを画像にかけて見るとよくわかる。</p>
+<p>https://github.com/yukimaru77/pytorch-experiment/blob/master/jupyterLab/work/chapter10.ipynb</p>
+<h2 id="rnn">RNN</h2>
+<p><img src="./RNN.png" alt=""></p>
+<p>RNNは過去のデータも考慮して、出力を決めることが出来るアーキテクチャである。画像を数式化する。入力がシーケンシャルデータ(順序に意味のあるデータ)とし、そのt番目のデータを$x^{<t>}$とし、$g_1,g_2$は活性化関数である。</p>
+<p>$$
+入力:x^{<t>}
+$$</p>
+<p>$$
+内部状態(隠れ層):a^{<t>}=g_1(W_{ax}x^{<t>}+W_{aa}a^{<t-1>}+b_a)
+$$</p>
+<p>$$
+出力y^{<t>}=g_2(W_{ya}a^{<t>}+b_y)
+$$</p>
+<p>ただしこのような表記はあまりされず、慣習としてDense層は活性化関数を$g$とし、引数のパラメータを除いたものを$X,Y$とすると
+$$g(W_XX+W_YY+b):=f^g(X,Y)$$
+と表記されるため先ほどのの入力、内部状態、出力は</p>
+<p>$$
+入力:x^{<t>}
+$$</p>
+<p>$$
+内部状態(隠れ層):a^{<t>}=f^{g_1}(x^{<t>},a^{<t-1>})
+$$</p>
+<p>$$
+出力y^{<t>}=f^{g_2}(a^{<t>})
+$$</p>
+<p>ただし、今回の図のアーキテクチャでは先に$a^{<t>}$を計算してから$y^{<t>}$を計算するとなっていたのでその通りにしたが場合によっては$y^{<t>}$から計算する場合もある。つまり
+$$
+出力y^{<t>}=f^{g_2}(x^{<t>},a^{<t-1>})
+$$</p>
+<p>となっている場合もある。なお、RNNには以下のようなバリエーションがある。右上がエンコーダ、左下がデコーダに対応する。
+<img src="./rnn_ex.webp" alt=""></p>
+<h2 id="gru">GRU</h2>
+<p><img src="./GRU.jpg" alt=""></p>
+<p>RNNに長期記憶を持たせようとしている。ここで各文字の役割を先に説明しておく。</p>
+<ul>
+<li>$R_t$はどのくらい忘れるの？という指標</li>
+<li>$Z_t$はどのくらい新しい情報を使うの？という指標</li>
+<li>$\tilde{h}_t$は$x_t$によって追加された情報</li>
+<li>$h_t$は内部状態</li>
+</ul>
+<p>これによってRNNのように単純に内部状態を更新するのではなく、どのくらい更新するのか？という操作が可能になる。</p>
+<h2 id="lstm">LSTM</h2>
+<p><img src="./LSTM.png" alt="">
+<img src="./数式.png" alt=""></p>
+<p>RNNに長期記憶と短期記憶の両方を持たせようとしている。ここで各文字の役割を先に説明しておく。</p>
+<ul>
+<li>$c_t$は長期記憶</li>
+<li>$h_t$は短期記憶</li>
+<li>$f_t$は長期記憶をどのくらい忘れるの？という指標</li>
+<li>$i_t$は長期記憶にどのくらい新しい情報($\tilde{c}_t=$前回の短期記憶+現在の入力$x_t$)を混ぜるの？という指標</li>
+<li>$o_t$はどのくらい長期記憶から短期記憶にするの？という指標</li>
+</ul>
+<p>これによってRNNのように単純に内部状態を更新するのではなく、長期記憶と短期記憶の二つを持つことが可能になった。</p>
+<h2 id="bi-lstm">bi-LSTM</h2>
+<p><img src="./双方向.jpeg" alt=""></p>
+<p>LSTMは一方向しかデータを使わなかったのに対し、bi-LSTMは双方向の情報を使っている。</p>
+<h2 id="se-block">SE-block</h2>
+<p><img src="./SE_block.png" alt=""></p>
+<p>SE_blockは、各どの特量マップに注目すればいいかを明示的に指定する仕組み。</p>
+<h2 id="rnnlm">RNNLM</h2>
+<p><img src="./RNNLM.png" alt=""></p>
+<p>RNNを言語モデル(LM)に用いるということ。普通のRNNに見える。なぜ特別な名前が与えられているのかよくわからない。</p>
+<h2 id="word2vec">word2vec</h2>
+<p>word2vecとはwordをvectorにするモデルの <strong>総称</strong> 。特別に何かを指すわけではない。ちなみに、ベクトルにした単語のことを単語の分散表現と言ったりする。</p>
+<h3 id="cbow">CBOW</h3>
+<p><img src="./CBOW.png" alt=""></p>
+<p>上記のアーキテクチャとなっている。Hidden layerは平均値をとっている。$W_{V×N}$は複数個あるが全て同じものを使用している。入力は$C-1$個の単語($X_{\frac{C}{2}}$が抜けている。)であり、出力は$X_{\frac{C}{2}}$の予測値の確率分布(Xはone_hotベクトル)。このタスクを精度よく解くことが出来れば、$W_{V×N}$のそれぞれの縦ベクトルが、単語の分散表現になっている。</p>
+<h3 id="skipgram">skip_gram</h3>
+<p><img src="./skip_gram.png" alt=""></p>
+<p>上記のアーキテクチャとなっている。CBOWの逆バージョン。ただし、$W_{N×V}$は全て同じのため当然ながら出力の確率分布はすべて等しくなってしまう。つまりタスクの精度だけを見るとかなり悪い。しかし、真のタスクは単語の分散表現の獲得のため、そんなことはどうだっていい。同じく、$W_{V×N}$のそれぞれの縦ベクトルが、単語の分散表現になっている。</p>
+<h3 id="%E8%BB%BD%E9%87%8F%E5%8C%96">軽量化</h3>
+<p>最後の出力は確率分布、つまりソフトマックス関数を使用している。しかし、一般にone-hotベクトル何百万次元となることが珍しくないため、シグマの計算が想い。よってhierarchical softmax(100分類×3回=100万回)といった手法や、negative sumplingといった手法で軽くするように努力している。</p>
+<h2 id="doc2vec">doc2vec</h2>
+<p>doc2vecとはdocumentをvectorにするモデルの総称。</p>
+<h3 id="pv-dm">PV-DM</h3>
+<p><img src="./pv_dm.png" alt=""></p>
+<p>上記のアーキテクチャになっている。word2vecのCBOWに対応している。タスクは各documentにidを振っておき、$n-1$個の単語からn個目の単語を予測するというタスク。分散表現も同様に、$D$の縦ベクトルがそれぞれの文章に対応する分散表現になっている。</p>
+<h3 id="pv-dbow">PV-DBOW</h3>
+<p>PV-DBOWというskip-gramに対応するものもあるが(本来はPV-DMとPV-DBOWの結果をconcatして一つの出力とする)、PV-DMのみでそこそこいい精度が出るらしく、例えばgensimではデフォルトでPV-DBOWは使わない設定となっている。よってここでは割愛する。</p>
+<h2 id="attention">Attention</h2>
+<p>(初代？)Attention機構は以下のような図になる。</p>
+<p><img src="./seq2seq.webp" alt=""></p>
+<p>この図は、seq2seqなるRNNの図となっている。さらに$h^{(3)}_dec$におけるAttetionに注目して図示した図である。(本当はすべての場所$h^{(n)}_dec$に矢印が伸びている。)それを図示したのが以下の図になる。</p>
+<p><img src="./attetion_layer.webp" alt=""></p>
+<p>数式にすると
+$$
+p(y_i)=p(y_i|y_{i-1},h^{(i)},c^{(i)})
+$$</p>
+<p>$$
+c^{(i)} = \sum _ jα^{(i)} _ {j}h^{(j)} _ {enc}
+$$</p>
+<p>$α^{(i)}_{j}$を学習することで、どの入力に対して重みを強くするかを操作することが出来る。</p>
+
+</article>
+</body>
+<script>
+	elements = document.getElementsByTagName("h2");
+	table_of_contents = document.createElement("ul");
+	h2=document.createElement("h2");
+	h2.textContent="目次"
+	table_of_contents.appendChild(h2)
+	for (  var i = 0;  i < elements.length;  i++  ) {
+		console.log(elements[ i ]);
+		const newElement_li = document.createElement("li");
+		const newElement_a = document.createElement("a");
+		newElement_a.href="#"+elements[ i ].id;
+		newElement_a.textContent = elements[ i ].textContent;
+		newElement_li.appendChild(newElement_a);
+		table_of_contents.appendChild(newElement_li);
+		
+	}
+	parents=document.getElementsByClassName("markdown-body")[0];
+	h1 = document.getElementsByTagName("h1")[0];
+	parents.insertBefore(table_of_contents, h1.nextSibling)
+</script>
+</html>
