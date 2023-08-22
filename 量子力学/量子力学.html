@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>量子力学.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://yukimaru77.github.io/practice/github-markdown.css">
+<style>
+.markdown-body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+}
+
+@media (max-width: 767px) {
+.markdown-body {
+  padding: 15px;
+}
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<!-- MathJaxのCDNリンクを追加 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ]
+    });
+  });
+  elements = document.getElementsByTagName("h2");
+  console.log(elements)
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      Macros: {
+        bra: ["\\langle {#1}|", 1],
+        ket: ["|{#1}\\rangle", 1],
+        braket: ["\\langle {#1}|{#2}\\rangle", 2],
+				bold: ["\\mathbf{#1}", 1]
+      }
+    },
+		tex2jax: {
+			inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+			displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		}
+  });
+</script>
+
+</head>
+<body>
+  <article class="markdown-body">
+<h1 id="%E9%87%8F%E5%AD%90%E8%AB%96%E3%83%BB%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6">量子論・量子力学</h1>
+<h2 id="%E5%AD%A6%E5%95%8F%E3%81%AE%E6%AD%A3%E3%81%97%E3%81%95%E3%81%A8%E3%81%AF">学問の正しさとは？</h2>
+<p>学問の正しさとは何だろうか。ここで言う「正しさ」とはなにも、正義や悪とは何かといったたいそうな話ではない。</p>
+<p>例えば、数学を考えてみよう。皆が知っているユークリッド幾何学は正しいのだろうか。逆に平行線公準を排した非ユークリッド幾何学は正しいのだろうか。公理的集合論(選択公理などという∞に関する一種の概念のようなものを公理として論理的推論を進めていく学問)は正しいだろうか。今の問いから分かるように数学の学問において正しさは存在しない。あくまで存在するのは主張(命題)が、与えられた公理と論理的推論で証明できるかどうかという、公理の上での正しさであり、学問の正しさそのものを問うことはできない。</p>
+<p>数学はただの記号がたくさん集まってできたお化けのようなもので、現実世界にはその姿を現さない。例えば数字は現実世界にあると思うかもしれないが1とか2とかの概念は、あくまで自然数はペアノの公理を満たすような集合Nに対し、その集合に後者と記号0の概念を導入し0の後者は1という記号を用いる。1の後者は2という記号を用いる。2という記号は・・・。といった形で定義した記号に過ぎない。</p>
+<p>それに対して、物理というものは実験事実という分かりやすい正しさが存在する。と言っても、一つの実験のみに合う理論はいくらでも作れてしまうので、そうなると実験事実の数だけ理論が作れてしまう。そこで我々が出来ることは出来るだけ多くの実験を行って、数多くの実験に合うような正しい理論を絞っていくことである。そして出来るだけ多くの実験にあうような理論が、正しいとまでとは言わずとも尤もらしい理論と呼べる。もちろん全ての物理現象に対して正確な予測を与える理論が作れたならそれは「正しい」理論なのだろうが現状そのようなものはないため尤もらしいという表現を使った。</p>
+<p>今から、量子論・量子力学をやっていくのだが、これは古典論では説明できないような領域をカバーするような理論であって古典論の上位互換というわけではありません。また、実験事実から分かることは古典論(実在論)では記述できないということだけであって、量子論が唯一の理論ではありません。しかし、比較的少数の実験事実しか無かった時代に作られた理論が、その後の数多くの実験事実を説明・予言するのにもすべて無修正ですんでしまった点や量子論以外にはこれほど広い範囲の実験事実を説明・予言出来る理論が知られていない。つまり、論理的必然性に基づいて出てきた唯一の理論ではないのだが、今のところ、なぜか驚異的にうまくいっている理論体系ということです。(a)</p>
+<h2 id="%E5%AE%9F%E5%9C%A8%E8%AB%96%E3%81%A8%E5%8F%A4%E5%85%B8%E8%AB%96">実在論と古典論</h2>
+<p>実在論とは、「<strong>測定をするしないにかかわらず、物理量は、各瞬間瞬間で定まった値を持っている。</strong>」という考え方である。</p>
+<p>古典論とはニュートン力学、マクスウェルの電磁理論、相対論的力学などの古典物理学により体系化された理論の総称である。古典論は実在論を採用しており、各時刻において物理量は必ず定まっていると言った信念のもと構築されている。例えば、ニュートンの運動方程式やマクスウェル方程式は、<strong>初期時刻&amp;t_0$における物理量の値が与えられたとき、後の時刻における物理量の計算手続きを与える</strong>といった形で定式化が行われた。</p>
+<h2 id="%E5%8F%A4%E5%85%B8%E8%AB%96%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%9E%A0%E7%B5%84%E3%81%BF">古典論の基本的枠組み</h2>
+<ol>
+<li>全ての物理量はどの瞬間にも各々が<strong>ひとつずつ定まった値</strong>を持っている。</li>
+<li><strong>測定</strong>とはその字奥における物理量の値を確認する行為である。</li>
+<li><strong>物理状態</strong>とは、その時刻における基本変数(位置と運動量等)の値のことである。</li>
+<li><strong>時間発展</strong>とは、物理量の値が時刻によって変化することである。</li>
+</ol>
+<h2 id="%E5%8F%A4%E5%85%B8%E8%AB%96%E3%81%AE%E7%A0%B4%E7%B6%BB">古典論の破綻</h2>
+<p>原子の安定性の問題や全く同じ状態を用意しても測定結果がばらついてしまうような実験の存在から古典論では説明できない事象が存在した。さらに、J.S.Bellは1964年にベルの不等式を証明し、その内容は<strong>古典論的考え方を捨て去らない限りいかに運動の法則や変数の数を改変しようとも決して説明できない自然現象がある</strong>というものだった。</p>
+<h2 id="%E9%87%8F%E5%AD%90%E8%AB%96%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9">量子論の考え方</h2>
+<p>測定結果がばらついてしまうような実験はあるが、測定値の確率分布に関しては収束していた。そこで古典論とは違い、全ての物理量が確定値を持つような状態は存在せずこれが自然の本性であるというスタンスを取ることにした。<strong>そして古典論では各々の時刻で決まっている物理量の値を予言する</strong>ことで定式化をしていったように量子論では <strong>物理量の確率分布を予言する</strong>といった形で定式化していくこととなる。</p>
+<p>なので、量子論の予言は確率分布なのでそれさえ同じになればそれはすべて等価な理論となる。今回は、「演算子形式」の「シュレディンガー描像」で行う。</p>
+<h2 id="%E9%87%8F%E5%AD%90%E8%AB%96%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%9E%A0%E7%B5%84%E3%81%BF">量子論の基本的枠組み</h2>
+<ol>
+<li>全ての物理量が各瞬間瞬間で<strong>定まった値を持つことは一般にない</strong>。よって数値を入れる箱の役割をしていた変数では物理量を表せなくなるため、<strong>物理量は演算子で表す</strong>。</li>
+<li><strong>物理量の測定</strong>とは、確率分布$ \lbrace P(a) \rbrace $から実際に測定値を得る行為である。</li>
+<li><strong>物理状態</strong>とは、演算子Aから確率分布$\lbrace P(a) \rbrace$への写像$ψ$のことである。つまり現実には仮想的な記号を物理状態として置くこととなる。</li>
+<li><strong>時間発展</strong>とは、測定を行う時刻によって得られる確率分布が変化することである。つまり、演算子Aまたは物理状態$ψ$が変化することである。</li>
+<li>状態$ψ、ψ'$が同じ状態とは、どんな物理量の測定値の確率分布も一致するようなときである。なので、必ずしも$ψ=ψ'$を満たす必要はない。</li>
+</ol>
+<h2 id="%E7%89%A9%E7%90%86%E7%8A%B6%E6%85%8B">物理状態</h2>
+<p>「全ての物理量はどの瞬間にも各々が<strong>ひとつずつ定まった値</strong>を持っている。」といった実在論を信念にする古典論の場合、<strong>物理状態</strong>とは物理量の一覧表、あるいは位置と運動量などの正準変数の物理量の値が物理状態を表すこととなる。</p>
+<p>一方で、量子論の場合物理状態は<strong>ヒルベルト空間の元</strong>として表すこととなる。ただし、なぜこのような分かりにくいもの/実在しないものを物理状態として採用するかというと、そうすることで実験事実がうまく説明できるからとなる。</p>
+<h2 id="%E7%89%A9%E7%90%86%E7%8A%B6%E6%85%8B%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E8%A6%81%E8%AB%8B%E8%A6%81%E8%AB%8B1">物理状態に対する要請(要請1)</h2>
+<p>物理状態はノルムが1であるという要請を受ける。さらに物理状態は$e^{iθ}$倍されたものを同一視する(同じ確率分布を与える為である。なお、状態の重ね合わせなどの場合は係数も重要。)。つまり要請は以下となる。</p>
+<ol>
+<li>量子系の純粋状態は、ある複素ヒルベルト空間$\mathcal{H}$の、規格化された斜線で表す。</li>
+</ol>
+<p>規格化とはノルムが1になっていること、斜線とは$e^{iθ}$倍されたもの集合$\lbrace e^{iθ}\ket{φ} | 0\leqq θ &lt; 2π \rbrace$のこと。</p>
+<h2 id="%E3%83%96%E3%83%A9%E3%81%A8%E3%82%B1%E3%83%83%E3%83%88">ブラとケット</h2>
+<p>ヒルベルト空間は難しいものではなく意外と簡単に構成できる。好きな記号(今回は$\ket{φ_1}$と$\ket{φ_2}$)を何個か用意する。さらにその記号の前に複素数$α、β$と<strong>ただの記号</strong>「+」を用いて「$α\ket{φ_1}+β\ket{φ_2}$」という記号を用意する。個の記号を用いてヒルベルト空間を構成しよう。まず集合$\mathcal{H}$を以下のように定義する。
+$$
+\mathcal{H} = \lbrace α\ket{φ_1}+β\ket{φ_2}|α,β\in C \rbrace
+$$
+さらにこれをヒルベルト空間にするには体K(今回は複素数C)と集合$\mathcal{H}$に対するスカラー倍、集合$\mathcal{H}$上の和やノルム、内積の公理を満たすような演算子「+」、「$||\cdot||$」、「$&lt;\cdot,\cdot&gt;$」等を適切に定義する。例えば和なら
+$\ket{φ},\ket{φ'}\in \mathcal{H}$なる元を考えそれらが、$\ket{φ}=α_1\ket{φ_1}+β_1\ket{φ_2},\ket{φ'}=α_2\ket{φ_1}+β_2\ket{φ_2}$とすると
+$$
+c_1\ket{φ}+c_2\ket{φ'}\equiv (c_1α_1+c_2α_2)\ket{φ_1}+(c_1β_1+c_2β_2)\ket{φ_2}
+$$
+と定義する。このように定義することで、演算子「+」は和の公理を満たすような演算子となる。内積やノルムも同様に定義することでヒルベルト空間が構成できる。</p>
+<p>ここで以下のような2次元複素ベクトルを考える。
+$$
+\mathcal{H'}=\lbrace \begin{pmatrix} α \\ β \end{pmatrix} | α,β\in C \rbrace
+$$
+これはヒルベルト空間をなす。ここで$α\ket{φ_1}+β\ket{φ_2}$という記号を$\begin{pmatrix} α \\ β \end{pmatrix}$という記号は一対一に対応させることが出来る。よってヒルベルト空間$\mathcal{H}$と2次元複素ベクトル空間$\mathcal{H'}$は同一視できる。そこで縦ベクトルをケット$\ket{φ}$、横ベクトルをブラ$\bra{φ}$という記号で表すことにする。また、ケットとブラの対応関係は以下のようになる。
+$$
+\ket{φ}=\begin{pmatrix} α \\ β \end{pmatrix} \leftrightarrow \bra{φ}=\begin{pmatrix} α^* &amp; β^* \end{pmatrix}
+$$</p>
+<p>内積はケットとブラの対応関係を用いて以下のように表すことが出来る。
+$$
+\braket{φ}{φ'}\equiv\begin{pmatrix} α^* &amp; β^* \end{pmatrix}\begin{pmatrix} α' \\ β' \end{pmatrix}=α^*α'+β^*β'
+$$</p>
+<h2 id="%E6%BC%94%E7%AE%97%E5%AD%90">演算子</h2>
+<p><strong>数学</strong>では集合$\mathcal{H}$から集合$\mathcal{H}$への写像を$\mathcal{H}$上の演算子という。また、fが線形作用素の時は$\mathcal{H}$上の線形作用素という。なお、線形作用素とは集合$A \subset \mathcal{H}$から集合$\mathcal{H}$への線形写像のことである。</p>
+<p>ただし量子論の文面では演算子とは通常、線形作用素を指す。例えばL2空間において微分演算子は線形作用素である。</p>
+<h2 id="%E8%87%AA%E5%B7%B1%E5%85%B1%E5%BD%B9%E6%BC%94%E7%AE%97%E5%AD%90">自己共役演算子</h2>
+<p>自己共役演算子の固有値は全て実数となり、さらに固有ベクトルの集合は正規直交完全系を成す(ように構成できる)。</p>
+<p>自己共役演算子$\hat A$の固有値を$a$、固有ベクトルを$\ket{a}$とすると、
+$$
+\hat A\ket{a}=a\ket{a}
+$$
+となり、固有ベクトルの集合$\lbrace \ket{a} \rbrace$は正規直交完全系を成す。固有値の重複がある場合、固有ベクトルは$\ket{a,l}$や太文字の$\bold a$を用いて$\ket{\bold a}$などと
+表記される。</p>
+<p>慣習的に、自己共役演算子$\hat A$の固有ベクトルを断り無しに$\ket{\bold a}$、自己共役演算子$\hat B$の固有ベクトルを断り無しに$\ket{\bold b}$などと表記し、$\ket{φ}$を任意の物理状態と表記する事が多い。</p>
+<h2 id="%E7%89%A9%E7%90%86%E9%87%8F%E8%A6%81%E8%AB%8B2">物理量(要請2)</h2>
+<p>実在論を前提とした古典論の立場に立つなら、物理量とはどんな時刻においても1つの値に定まっているベクトルやスカラー値である。よって何かしらの変数に対応させて表すことが出来ていた。</p>
+<p>それに対し量子論はそのようなことが出来ない。そこで以下のような要請を課す。</p>
+<ol start="2">
+<li>物理量はヒルベルト空間上の自己共役な演算子で表す</li>
+</ol>
+<p>自己共役とは転置して複素共役を取っても変わらないような演算子である。</p>
+<h2 id="%E6%B3%A2%E5%8B%95%E9%96%A2%E6%95%B0">波動関数</h2>
+<p>あるヒルベルト空間を考える。さらに正規直交完全系(つまり基底)を1つ用意する。例えば、自己共役演算子$\hat A$の固有ベクトル$\ket{a}$を用いることにする。この時、任意の物理状態$\ket{φ}$は以下のように展開できる。
+$$
+\ket{φ}=\sum_aφ(a)\ket{a}
+$$
+ここで$φ(a)$とは$\ket{a}$の係数である。この$φ(a)$を<strong>波動関数</strong>という。</p>
+<p>ここでは固有値が離散的であると暗に仮定していたが、連続的な場合も考えることが出来る。その場合は以下のようになる。
+$$
+\ket{φ}=\int_aφ(a)\ket{a}da
+$$
+ここで、aをxと置き換えると
+$$
+\ket{φ}=\int_xφ(x)\ket{x}dx
+$$
+となる。この$φ(x)$を<strong>波動関数</strong>といい、普段よく見るであろう(基底$\ket{x}$表示の)波動関数である。</p>
+<p>波動関数とはいうなれば、線形結合の係数を表す関数である。線形結合の場合、ある状態の係数の表し方は1通りのため、状態ベクトルと波動関数は一対一対応である。</p>
+<h2 id="%E5%B0%84%E5%BD%B1%E6%BC%94%E7%AE%97%E5%AD%90">射影演算子</h2>
+<p>ケットベクトル$\ket{a}、\ket{b}、\ket{φ}$を用いて以下のような操作を考える。
+$$
+\braket{a}{φ}\ket{b}
+$$
+これを日本語で読むと、「$\ket{φ}$にブラ$\bra{a}$を作用させて得た内積の値をケット$\ket{b}$にかける」となる。この操作をする演算子を$\ket{b}\bra{a}$と表記すると定義する。つまり、
+$$
+\ket{b}\bra{a}\ket{φ}=\braket{a}{φ}\ket{b}
+$$
+となる。ここで$\ket{a}\bra{a}$の時、これを射影演算子$\hat P(a)$という。この射影演算子は$\ket{φ}$を$\ket{a}$方向への射影する演算子である。</p>
+<p>ここで、ケット$\ket{a}$の集合が直交完全系をなすなら
+$$
+\sum_a\ket{a}\bra{a}=\hat 1
+$$
+であり、
+$$
+\hat P(a)\hat P(a')=δ_{aa'}\hat P(a)
+$$
+である。</p>
+<h2 id="%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%88%E3%83%AB%E5%88%86%E8%A7%A3">スペクトル分解</h2>
+<p>自己共役演算子$\hat A$の固有値を$a$、固有ベクトルを$\ket{a}$とすると、
+$$
+\hat A=\sum_a a\hat P(a)
+$$</p>
+<p>となる。よって、自己共役演算子$\hat A$は$\hat P(a)$の線形結合で書くことが出来る。これをスペクトル分解という。</p>
+<h2 id="%E6%BC%94%E7%AE%97%E5%AD%90%E3%82%92%E5%BC%95%E6%95%B0%E3%81%AB%E5%8F%96%E3%82%8B%E9%96%A2%E6%95%B0">演算子を引数に取る関数</h2>
+<p>実数を引数に取る関数を拡張して演算子を引数に取る関数を考える。それは演算子$\hat A$に対して拡張するとスペクトル分解を用いて
+$$
+f(\hat A)\equiv\sum_a f(a)\hat P(a)
+$$
+と定義される。</p>
+<p>例えば$f(x)=\sqrt{x}$という関数を考える。この場合は、
+$$
+\sqrt{\hat A}\equiv\sum_a \sqrt{a}\hat P(a)
+$$
+となる。</p>
+<h2 id="%E3%83%9C%E3%83%AB%E3%83%B3%E3%81%AE%E7%A2%BA%E7%8E%87%E8%A6%8F%E5%89%87">ボルンの確率規則</h2>
+<p>物理量を実際に測定することを考えよう。その時、測定値は確率分布に従って得られる。その確率分布を与えるのがボルンの確率規則である。ボルンの確率規則は以下のような要請である。</p>
+<ol start="3">
+<li>物理量Aの測定値は、$\hat A$の固有値$a$のどれかに限られ、それを得る確率$P(a)$はaに属する固有空間への射影演算子$\hat P(a)$を用いて以下のように与える。
+$$
+P(a)=||\hat P(a)\ket{φ}||^2
+$$</li>
+</ol>
+<h2 id="%E9%87%8D%E3%81%AD%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A8%E5%B9%B2%E6%B8%89%E5%8A%B9%E6%9E%9C">重ね合わせと干渉効果</h2>
+<p>量子論では、物理状態はヒルベルト空間の元である。よって、和などの演算子を物理状態にも適用することが出来る。例えば、ある物理状態$\ket{φ_1}$と$\ket{φ_2}$があったとする。この時、重ね合わせとして
+$$
+\ket{φ}= c_1\ket{φ_1}+ c_2\ket{φ_2}
+$$
+といった状態が作れる。これを状態の重ね合わせなどと呼ぶ。</p>
+<p>ここで、演算子$\hat A$の確率分布を考える。そこで、$P_φ(a)$を固有値aの取る確率とする。さらにある物理状態$\ket{φ_1}$と$\ket{φ_2}$が固有値aの取る確率をそれぞれ$P_{φ_1}(a)$と$P_{φ_2}(a)$とする。この時、
+$$
+\begin{aligned}
+P_φ(a)&amp;=||\hat P(a)\ket{φ}||^2\\
+&amp;=\bra{φ}P(a)\ket{φ}\\
+&amp;=(c_1^*\bra{φ_1}+ c_2^*\bra{φ_2})\cdot (P(a)c_1\ket{φ_1}+ P(a)c_2\ket{φ_2})\\
+&amp;=|c_1|^2P_{φ_1}(a)+|c_2|^2P_{φ_2}(a)+c_1^*c_2\bra{φ_1}P(a)\ket{φ_2}+c_2^*c_1\bra{φ_2}P(a)\ket{φ_1}
+\end{aligned}
+$$</p>
+<p>となる。直感的には$|c_1|^2P_{φ_1}(a)+|c_2|^2P_{φ_2}(a)$となると思うが、実際にはそうはならないのである。これを<strong>干渉効果</strong>という。</p>
+<h2 id="%E4%BA%A4%E6%8F%9B%E9%96%A2%E4%BF%82">交換関係</h2>
+<p>2つの演算子$\hat A$と$\hat B$に対して、
+$$
+\hat A\hat B\ket{φ}=\hat B\hat A\ket{φ}
+$$
+が成り立つ時、演算子$\hat A$と$\hat B$は交換するという。また、
+$$
+[\hat A,\hat B]\equiv\hat A\hat B-\hat B\hat A
+$$
+を交換子という。</p>
+<h2 id="%E6%8F%BA%E3%82%89%E3%81%8E%E3%81%A8%E4%B8%8D%E7%A2%BA%E5%AE%9A%E6%80%A7">揺らぎと不確定性</h2>
+<p>ある物理量Aの測定値の平均値を考える。これは、
+$$
+\bra{φ}\hat A\ket{φ}=\sum_a aP(a)
+$$
+で与えられ、$&lt; A &gt;$と表記する。また、ある物理量Aの測定値の揺らぎを考える。これはまず、
+$$
+Δ\hat A \equiv \hat A-&lt;A&gt;
+$$
+という演算子を定義した時、揺らぎ$δA$は
+$$
+\begin{aligned}
+δA^2&amp;\equiv &lt;Δ\hat A&gt;^2\\
+&amp;=\bra{φ}\hat A^2\ket{φ}-\bra{φ}\hat A\ket{φ}^2
+\end{aligned}
+$$
+で与えられる。</p>
+<p>交換関係$[\hat A,\hat B]=ik$を満たす2つの演算子$\hat A$と$\hat B$に対して、以下の定理が成り立つ。
+$$
+δAδB\geqq\frac{1}{2}|k|
+$$
+これを<strong>不確定性関係</strong>または、<strong>不確定性原理</strong>という。この式は、同じ状態$\ket φ$を用意してAを測ったときのゆらぎ$δA$とまた独立に同じ状態$\ket φ$を用意してBを測ったときのゆらぎ$δB$の積の下限は、交換関係のみで決まることを示している。よって$\ket φ$という状態が$δA=0$だとすると、$δB$は無限大になってしまうことを意味する。</p>
+<h2 id="%E3%82%B7%E3%83%A5%E3%83%AC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%AC%E3%83%BC%E6%96%B9%E7%A8%8B%E5%BC%8F%E8%A6%81%E8%AB%8B4">シュレディンガー方程式(要請4)</h2>
+<ol start="4">
+<li>閉じた量子系の、時刻ｔにおける状態ベクトルを$\ket{φ(t)}$とする。この時の時間発展は、系のエネルギー演算子$\hat H$を用いて以下のように与えられる。
+$$
+i\hbar\frac{d}{dt}\ket{φ(t)}=\hat H\ket{φ(t)}
+$$</li>
+</ol>
+<p>この方程式の解は、形式的には以下のように与えられる。
+$$
+\ket{φ(t)}=e^{-i\hat Ht/\hbar}\ket{φ(0)}
+$$</p>
+<p>エネルギー固有値と固有ベクトルを用いれば
+$$
+\ket{φ(t)}=\sum_n e^{-iE_nt/\hbar}φ(n)\ket{n}
+$$
+となる。ただし、$\ket{φ(0)}=\sum_nφ(n)\ket{n}$である。</p>
+<h2 id="%E6%B8%AC%E5%AE%9A%E5%BE%8C%E3%81%AE%E7%8A%B6%E6%85%8B%E8%A6%81%E8%AB%8B5">測定後の状態(要請5)</h2>
+<ol start="5">
+<li>測定値がaであったとき、測定後の状態は以下のように与えられる。(射影仮説)
+$$
+\ket{φ'}=\frac{\hat P(a)\ket{φ}}{||\hat P(a)\ket{φ}||}
+$$</li>
+</ol>
+<h2 id="%E8%A6%81%E8%AB%8B%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81">要請のまとめ</h2>
+<ol>
+<li>量子系の純粋状態は、ある複素ヒルベルト空間$\mathcal{H}$の、規格化された斜線で表す。</li>
+<li>物理量はヒルベルト空間上の自己共役な演算子で表す</li>
+<li>物理量Aの測定値は、$\hat A$の固有値$a$のどれかに限られ、それを得る確率$P(a)$はaに属する固有空間への射影演算子$\hat P(a)$を用いて以下のように与える。
+$$
+P(a)=||\hat P(a)\ket{φ}||^2
+$$</li>
+<li>閉じた量子系の、時刻ｔにおける状態ベクトルを$\ket{φ(t)}$とする。この時の時間発展は、系のエネルギー演算子$\hat H$を用いて以下のように与えられる。
+$$
+i\hbar\frac{d}{dt}\ket{φ(t)}=\hat H\ket{φ(t)}
+$$</li>
+<li>測定値がaであったとき、測定後の状態は以下のように与えられる。(射影仮説)
+$$
+\ket{φ'}=\frac{\hat P(a)\ket{φ}}{||\hat P(a)\ket{φ}||}
+$$</li>
+</ol>
+<h2 id="%E5%90%8C%E6%99%82%E5%9B%BA%E6%9C%89%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB">同時固有ベクトル</h2>
+<p>演算子$\hat A$と$\hat B$が交換するとき、$\hat A$と$\hat B$は同時固有ベクトルを持つ。つまり、
+$$
+\hat A\ket{a,b}=a\ket{a,b}, \hat B\ket{a,b}=b\ket{a,b}
+$$
+となるような$\ket{a,b}$が存在する。このような$\ket{a,b}$を同時固有ベクトルという。3つ以上でも同様である。</p>
+<h2 id="%E4%BA%A4%E6%8F%9B%E3%81%99%E3%82%8B%E7%89%A9%E7%90%86%E9%87%8F%E3%81%AE%E5%AE%8C%E5%85%A8%E9%9B%86%E5%90%88">交換する物理量の完全集合</h2>
+<p>演算子$\hat A$と$\hat B$が交換するとき、以下のことが成り立つ。
+$$
+[f(\hat A),g(\hat B)]=0、[f(\hat A),\hat A]=0、[g(\hat B),\hat B]=0
+$$
+よって交換する物理量自体は無限に存在する。例えば、$\hat A、\hat A^2、\hat A^3、 \hat B、 \hat B^2、\hat B^3$などでである。しかし、これらは本質的(実質的)に交換する物理量は$\hat A$と$\hat B$のみである。よって本質的に交換する物理量の集合$\lbrace \hat A,\hat B \rbrace$を考えることにする。さらに物理量A、Bの組み合わせで他のすべての物理量が表せる時、これを交換する物理量の完全集合という。</p>
+<h2 id="%E6%AD%A3%E6%BA%96%E9%87%8F%E5%AD%90%E5%8C%96">正準量子化</h2>
+<p>古典論では、正準変数と呼ばれる変数を用いて古典力学を記述していた。例えば、位置と運動量などである。これらの正準変数を演算子に置き換えることで量子論を記述することが出来る。これを正準量子化という。</p>
+<p>例として1自由度(1次元)の調和振動子を考える。この場合、正準変数は位置$x$と運動量$p$である。まずはヒルベルト空間を構成する。ここで交換する物理量の完全集合を考える。他の物理量は位置と運動量の関数で表すことが出来る。位置$\hat x$と運動量$\hat p$の交換関係は$[\hat x,\hat p]=i\hbar$なので、交換する物理量の完全集合はこれらの2のうち、どちらか一方を選べば十分である。ここでは位置$\hat x$を選ぶことにする。よって位置$\hat x$の固有ベクトルを用いてヒルベルト空間を構成する。</p>
+<p>ここで、位置$\hat x$の固有ベクトルを$\ket{x}$とすると、
+$$
+\mathcal{H}=\lbrace \ket φ|\ket φ=\int_xφ(x)\ket{x}dx,|\ket φ|^2=有限 \rbrace
+$$
+とすることでヒルベルト空間を構成できる。ここで、$φ(x)$は波動関数である。また、$\ket φ$は状態ベクトルである。さらに$φ(x)$と$\ket φ$は一対一対応であるので新たに集合$\mathcal{H'}$を以下のように定義する。
+$$
+\mathcal{H'}=\lbrace 二乗可積分な関数φ(x)全体 \rbrace
+$$
+ここで、$\mathcal{H'}$は$L^2$空間と呼ばれる。この$L^2$空間はヒルベルト空間となる。位置演算子$\hat x$は$\mathcal{H'}$ではどう表現できるかを考える。$\hat x$は$\ket{x}$を用いて以下のように表現できる。
+$$
+\hat x\ket φ=\int_xφ(x)x\ket{x}dx
+$$
+よって$φ(x)x$の部分に注目すればxが$\mathcal{H'}$での位置演算子であることが分かる。
+$$
+\ket φ \leftrightarrow φ(x)、\hat x\ket φ \leftrightarrow xφ(x)
+$$
+また、運動量演算子$\hat p$は以下のように表現できる。
+$$
+\hat p\ket φ\leftrightarrow\frac{\hbar}{i}\frac{d}{dx}φ(x)
+$$</p>
+<p>一旦情報を整理すると以下のようになる。なお、$\mathcal{H'}$を改めて$\mathcal{H}$と表記する。
+$$
+\begin{aligned}
+\mathcal{H} &amp;= \lbrace 二乗可積分な関数φ(x)全体 \rbrace\\
+&lt;φ(x),φ(x)'&gt;&amp;=\int_xφ^*(x)φ'(x)dx\\
+\hat x&amp;=xφ\\
+\hat p&amp;=\frac{\hbar}{i}\frac{d}{dx}\\
+物理量\hat A &amp;= \hat A(\hat x,\hat p) = \hat A(x,\frac{\hbar}{i}\frac{d}{dx})\\
+\end{aligned}
+$$</p>
+<p>である。ハミルトニアンは例えば、1次元調和振動子の場合
+$$
+\hat H=\frac{\hat p^2}{2m}+\frac{1}{2}m\omega^2\hat x^2
+$$
+となる。これを$\hat x$と$\hat p$を用いて表すと
+$$
+\hat H=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+\frac{1}{2}m\omega^2x^2
+$$
+となる。これをシュレディンガー方程式に代入すると
+$$
+i\hbar\frac{d}{dt}φ(x,t)=(-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+\frac{1}{2}m\omega^2x^2)φ(x,t)
+$$
+となる。これを解くことで、量子論における調和振動子の波動関数を得ることが出来る。</p>
+<p><strong>具体的な様々なケースの場合の計算とその結果については書籍を参照</strong></p>
+<h2 id="%E3%83%89%E3%83%96%E3%83%AD%E3%82%A4%E6%B3%A2%E9%95%B7">ドブロイ波長</h2>
+<p>1次元自由粒子でシュレディンガー方程式を解くと、
+$$
+φ(x,t)=\frac{1}{\sqrt{2π}}e^{i(kx-\omega_k t)}
+$$</p>
+<p>となる。ただし、kはハミルトニアンの固有値であり、初期状態はハミルトニアンの固有値kに対応する固有状態であるとした。また、$ω_k=\frac{E_k}{\hbar}、E_k=\frac{\hbar^2k^2}{2m}$である。なお、自由粒子の場合$\hat H = \frac{\hat p^2}{2m}$なのでエネルギーと運動量は交換する。よってエネルギーが定まっている状態=運動量が定まっている状態でもあり、その値は$p=\hbar k$である。</p>
+<p>ここで運動量が定まっている状態(=エネルギーが定まっている状態)の時、波動関数は波数$k=\frac{p}{\hbar}$、波長$λ=\frac{2π}{k}=\frac{h}{p}$の波の関数になっている。これらをドブロイの関係式と呼び、$λ$をドブロイ波長と呼ぶ。そしてこの波動関数は通常の波と同様に干渉したり回折したりする(ような解が導ける)。</p>
+
+</article>
+</body>
+<script>
+	elements = document.getElementsByTagName("h2");
+	table_of_contents = document.createElement("ul");
+	h2=document.createElement("h2");
+	h2.textContent="目次"
+	table_of_contents.appendChild(h2)
+	for (  var i = 0;  i < elements.length;  i++  ) {
+		console.log(elements[ i ]);
+		const newElement_li = document.createElement("li");
+		const newElement_a = document.createElement("a");
+		newElement_a.href="#"+elements[ i ].id;
+		newElement_a.textContent = elements[ i ].textContent;
+		newElement_li.appendChild(newElement_a);
+		table_of_contents.appendChild(newElement_li);
+		
+	}
+	parents=document.getElementsByClassName("markdown-body")[0];
+	h1 = document.getElementsByTagName("h1")[0];
+	parents.insertBefore(table_of_contents, h1.nextSibling)
+</script>
+</html>
